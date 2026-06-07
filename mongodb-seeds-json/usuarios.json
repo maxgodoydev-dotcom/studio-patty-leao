@@ -1,0 +1,235 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000001"
+    },
+    "email": "patty@studio.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "SUPER_ADMIN",
+      "PROFISSIONAL"
+    ],
+    "tipo_perfil": "ADMIN",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Patty Leão"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000002"
+    },
+    "email": "maxgodoy.dev@gmail.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "SUPER_ADMIN"
+    ],
+    "tipo_perfil": "ADMIN",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Max Godoy"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000003"
+    },
+    "email": "daniel@studio.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "FINANCEIRO",
+      "ESTOQUE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Daniel Leão"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000004"
+    },
+    "email": "recepcao@studio.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "RECEPCAO"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Recepção Studio Patty Leão"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000005"
+    },
+    "email": "luana@studio.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "PROFISSIONAL"
+    ],
+    "tipo_perfil": "PROFISSIONAL",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Luana Souza"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000101"
+    },
+    "email": "cliente1@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 1"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000102"
+    },
+    "email": "cliente2@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 2"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000103"
+    },
+    "email": "cliente3@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 3"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000104"
+    },
+    "email": "cliente4@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 4"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000105"
+    },
+    "email": "cliente5@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 5"
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000106"
+    },
+    "email": "cliente6@email.com",
+    "cpf": null,
+    "senha": "$2b$10$vtiK9PcwDuaQ07.wjya0WeVusMulamWkawdFYaM8KNwxPzm6T5Kv.",
+    "permissoes": [
+      "CLIENTE"
+    ],
+    "tipo_perfil": "CLIENTE",
+    "flg_ativo": true,
+    "token_sessao": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "nome": "Cliente 6"
+  }
+]

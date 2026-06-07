@@ -1,0 +1,142 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000301"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000101"
+    },
+    "nome": "Ana Carolina Santos",
+    "telefone": "11988880001",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000302"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000102"
+    },
+    "nome": "Bruna Oliveira",
+    "telefone": "11988880002",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000303"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000103"
+    },
+    "nome": "Camila Ferreira",
+    "telefone": "11988880003",
+    "flg_alergico": true,
+    "detalhes_alergia": "Sensibilidade a descolorante e fragrâncias fortes.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000304"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000104"
+    },
+    "nome": "Juliana Martins",
+    "telefone": "11988880004",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000305"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000105"
+    },
+    "nome": "Mariana Lima",
+    "telefone": "11988880005",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000306"
+    },
+    "id_usuario": {
+      "$oid": "666000000000000000000106"
+    },
+    "nome": "Patrícia Souza",
+    "telefone": "11988880006",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000307"
+    },
+    "id_usuario": null,
+    "nome": "Cliente Balcão - Sem Conta",
+    "telefone": "11977770001",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000308"
+    },
+    "id_usuario": null,
+    "nome": "Fernanda Rocha",
+    "telefone": "11977770002",
+    "flg_alergico": false,
+    "detalhes_alergia": null,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

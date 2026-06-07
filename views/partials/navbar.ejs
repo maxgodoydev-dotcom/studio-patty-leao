@@ -1,0 +1,135 @@
+<%#
+  PARTIAL: navbar.ejs
+  USO: include('partials/navbar', { paginaAtiva: 'home' })
+  paginaAtiva: 'home' | 'sobre' | 'agendamento' | 'preco' | 'galeria' | 'vitrine' | 'cadastro' | 'login' | 'perfil'
+%>
+<%
+  const navUsuario = (typeof usuario !== 'undefined' && usuario) ? usuario : null;
+  const navPermissoes = navUsuario && Array.isArray(navUsuario.permissoes) ? navUsuario.permissoes : [];
+  const temPainelInterno = navPermissoes.some(p => ['SUPER_ADMIN','RECEPCAO','FINANCEIRO','ESTOQUE','PROFISSIONAL'].includes(p));
+  const painelHref = navPermissoes.includes('SUPER_ADMIN') ? '/admin'
+    : navPermissoes.includes('RECEPCAO') ? '/recepcao'
+    : navPermissoes.includes('PROFISSIONAL') ? '/perfil/profissional'
+    : navPermissoes.includes('FINANCEIRO') ? '/financeiro'
+    : navPermissoes.includes('ESTOQUE') ? '/estoque'
+    : '/perfil';
+%>
+<nav class="navbar navbar-expand-lg sticky-top" id="navbar-principal" data-bs-theme="dark">
+  <div class="container-fluid px-4">
+
+    <!-- LOGO -->
+    <a class="navbar-brand" href="/" aria-label="Ir para a página inicial">
+      <img src="/assets/img/logo.png" width="160" height="100" alt="Studio Patty Leão">
+    </a>
+
+    <!-- BOTÃO MOBILE -->
+    <button class="navbar-toggler border-0" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarPrincipal"
+      aria-controls="navbarPrincipal"
+      aria-expanded="false"
+      aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- LINKS -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarPrincipal">
+      <ul class="navbar-nav nav-underline gap-lg-2 mb-2 mb-lg-0 align-items-lg-center">
+
+        <li class="nav-item">
+          <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'home') ? 'active' : '' %>" href="/">
+            <i class="fa-solid fa-house me-1"></i>HOME
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'sobre') ? 'active' : '' %>" href="/sobre">
+            <i class="fa-solid fa-spa me-1"></i>SOBRE
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'agendamento') ? 'active' : '' %>" href="/agendamento">
+            <i class="fa-solid fa-calendar-check me-1"></i>AGENDAR
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'preco') ? 'active' : '' %>" href="/servicos">
+            <i class="fa-solid fa-tags me-1"></i>SERVIÇOS
+          </a>
+        </li>
+
+        <!-- GALERIA DROPDOWN -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'galeria') ? 'active' : '' %>"
+            href="#" role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-images me-1"></i>GALERIA
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/progressiva"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>PROGRESSIVAS</a></li>
+            <li><a class="dropdown-item" href="/escova"><i class="fa-solid fa-wind me-2"></i>ESCOVAS</a></li>
+            <li><a class="dropdown-item" href="/tratamentos"><i class="fa-solid fa-hand-sparkles me-2"></i>TRATAMENTOS</a></li>
+            <li><a class="dropdown-item" href="/cronograma"><i class="fa-solid fa-list-check me-2"></i>CRONOGRAMAS</a></li>
+          </ul>
+        </li>
+
+        <!-- VITRINE DIGITAL -->
+        <li class="nav-item">
+          <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'vitrine') ? 'active' : '' %>" href="/vitrine">
+            <i class="fa-solid fa-store me-1"></i>VITRINE
+            <span class="nav-mini-badge d-none d-xl-inline">reserva</span>
+          </a>
+        </li>
+
+        <!-- DINÂMICO: logado ou não -->
+        <% if (navUsuario) { %>
+
+          <% if (temPainelInterno) { %>
+            <li class="nav-item">
+              <a class="nav-link text-warning fw-bold" href="<%= painelHref %>">
+                <i class="fa-solid fa-gauge-high me-1"></i>PAINEL
+              </a>
+            </li>
+          <% } %>
+
+          <li class="nav-item">
+            <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'perfil') ? 'active' : '' %> text-warning fw-bold" href="/perfil">
+              <i class="fa-solid fa-user me-1"></i>MINHA CONTA
+            </a>
+          </li>
+
+          <li class="nav-item ms-lg-2">
+            <form action="/auth/logout" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-outline-danger btn-sm px-3 mt-1 nav-logout-btn">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>SAIR
+              </button>
+            </form>
+          </li>
+
+        <% } else { %>
+
+          <li class="nav-item">
+            <a class="nav-link <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'cadastro') ? 'active' : '' %>" href="/cadastro">
+              <i class="fa-solid fa-user-plus me-1"></i>CADASTRO
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link nav-login <%= (typeof paginaAtiva !== 'undefined' && paginaAtiva === 'login') ? 'active' : '' %>" href="/login">
+              <i class="fa-solid fa-user-lock me-1"></i>LOGIN
+            </a>
+          </li>
+
+        <% } %>
+
+      </ul>
+    </div>
+
+    <!-- espaçamento para centralizar os links -->
+    <div class="navbar-espacamento d-none d-lg-block"></div>
+
+  </div>
+</nav>

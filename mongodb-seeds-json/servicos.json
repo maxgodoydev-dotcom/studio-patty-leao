@@ -1,0 +1,466 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000401"
+    },
+    "nome_servico": "Progressiva Extra G",
+    "descricao_servico": "Alinhamento e redução de volume para cabelo extra grande.",
+    "preco_servico": 180.0,
+    "duracao_estimada_min": 150,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000402"
+    },
+    "nome_servico": "Escova Extra G",
+    "descricao_servico": "Escova para cabelo extra grande.",
+    "preco_servico": 80.0,
+    "duracao_estimada_min": 75,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000403"
+    },
+    "nome_servico": "Hidratação Capilar",
+    "descricao_servico": "Hidratação profissional. Escova à parte.",
+    "preco_servico": 50.0,
+    "duracao_estimada_min": 60,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000404"
+    },
+    "nome_servico": "Cronograma Capilar Tradicional P",
+    "descricao_servico": "Cronograma tradicional para cabelo pequeno.",
+    "preco_servico": 150.0,
+    "duracao_estimada_min": 90,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000405"
+    },
+    "nome_servico": "Corte",
+    "descricao_servico": "Corte feminino.",
+    "preco_servico": 35.0,
+    "duracao_estimada_min": 45,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000406"
+    },
+    "nome_servico": "Botox Capilar M",
+    "descricao_servico": "Botox capilar para cabelo médio.",
+    "preco_servico": 120.0,
+    "duracao_estimada_min": 120,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000407"
+    },
+    "nome_servico": "Luzes / Moreno Iluminado",
+    "descricao_servico": "Mechas, luzes ou moreno iluminado. Valor a partir de.",
+    "preco_servico": 250.0,
+    "duracao_estimada_min": 180,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000408"
+    },
+    "nome_servico": "Coloração com tinta do salão",
+    "descricao_servico": "Coloração usando tinta do salão. Escova à parte.",
+    "preco_servico": 60.0,
+    "duracao_estimada_min": 90,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000409"
+    },
+    "nome_servico": "Coloração com tinta da cliente",
+    "descricao_servico": "Coloração usando tinta da cliente. Escova à parte.",
+    "preco_servico": 35.0,
+    "duracao_estimada_min": 75,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000410"
+    },
+    "nome_servico": "Reconstrução",
+    "descricao_servico": "Reconstrução capilar para reposição de massa.",
+    "preco_servico": 100.0,
+    "duracao_estimada_min": 75,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000411"
+    },
+    "nome_servico": "Selagem M",
+    "descricao_servico": "Selagem para cabelo médio.",
+    "preco_servico": 150.0,
+    "duracao_estimada_min": 120,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000412"
+    },
+    "nome_servico": "Banho de Petróleo",
+    "descricao_servico": "Banho de petróleo com escova inclusa.",
+    "preco_servico": 100.0,
+    "duracao_estimada_min": 90,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000413"
+    },
+    "nome_servico": "Escova P",
+    "descricao_servico": "Escova para cabelo pequeno.",
+    "preco_servico": 40.0,
+    "duracao_estimada_min": 45,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000414"
+    },
+    "nome_servico": "Escova M",
+    "descricao_servico": "Escova para cabelo médio.",
+    "preco_servico": 50.0,
+    "duracao_estimada_min": 60,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000415"
+    },
+    "nome_servico": "Escova G",
+    "descricao_servico": "Escova para cabelo grande.",
+    "preco_servico": 60.0,
+    "duracao_estimada_min": 60,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000416"
+    },
+    "nome_servico": "Cronograma Capilar Tradicional M",
+    "descricao_servico": "Cronograma tradicional para cabelo médio.",
+    "preco_servico": 250.0,
+    "duracao_estimada_min": 120,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000417"
+    },
+    "nome_servico": "Cronograma Capilar Tradicional G",
+    "descricao_servico": "Cronograma tradicional para cabelo grande.",
+    "preco_servico": 280.0,
+    "duracao_estimada_min": 150,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000418"
+    },
+    "nome_servico": "Cronograma Capilar Terapêutico",
+    "descricao_servico": "Cronograma terapêutico. Valor a partir de.",
+    "preco_servico": 250.0,
+    "duracao_estimada_min": 150,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000419"
+    },
+    "nome_servico": "Progressiva P",
+    "descricao_servico": "Progressiva para cabelo pequeno.",
+    "preco_servico": 140.0,
+    "duracao_estimada_min": 120,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000420"
+    },
+    "nome_servico": "Progressiva M",
+    "descricao_servico": "Progressiva para cabelo médio.",
+    "preco_servico": 150.0,
+    "duracao_estimada_min": 135,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000421"
+    },
+    "nome_servico": "Progressiva G",
+    "descricao_servico": "Progressiva para cabelo grande.",
+    "preco_servico": 160.0,
+    "duracao_estimada_min": 150,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000422"
+    },
+    "nome_servico": "Selagem P",
+    "descricao_servico": "Selagem para cabelo pequeno.",
+    "preco_servico": 140.0,
+    "duracao_estimada_min": 100,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000423"
+    },
+    "nome_servico": "Selagem G",
+    "descricao_servico": "Selagem para cabelo grande.",
+    "preco_servico": 160.0,
+    "duracao_estimada_min": 135,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000424"
+    },
+    "nome_servico": "Selagem Extra G",
+    "descricao_servico": "Selagem para cabelo extra grande.",
+    "preco_servico": 180.0,
+    "duracao_estimada_min": 150,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000425"
+    },
+    "nome_servico": "Botox Capilar P",
+    "descricao_servico": "Botox capilar para cabelo pequeno.",
+    "preco_servico": 100.0,
+    "duracao_estimada_min": 90,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000426"
+    },
+    "nome_servico": "Botox Capilar G",
+    "descricao_servico": "Botox capilar para cabelo grande.",
+    "preco_servico": 130.0,
+    "duracao_estimada_min": 120,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000427"
+    },
+    "nome_servico": "Botox Capilar Extra G",
+    "descricao_servico": "Botox capilar para cabelo extra grande.",
+    "preco_servico": 140.0,
+    "duracao_estimada_min": 135,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000428"
+    },
+    "nome_servico": "Cauterização",
+    "descricao_servico": "Cauterização capilar.",
+    "preco_servico": 100.0,
+    "duracao_estimada_min": 75,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000429"
+    },
+    "nome_servico": "Descoloração Global",
+    "descricao_servico": "Descoloração global. Valor a partir de.",
+    "preco_servico": 300.0,
+    "duracao_estimada_min": 210,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

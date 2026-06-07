@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Página não encontrada' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <%- include('partials/navbar') %>
+
+  <main class="d-flex flex-column align-items-center justify-content-center text-center py-5" style="min-height:70vh;">
+
+    <div style="font-family:var(--fonte-titulo);font-size:clamp(5rem,15vw,9rem);color:var(--cor-dourado);line-height:1;animation:brilhoTexto 3s ease-in-out infinite alternate;">
+      404
+    </div>
+
+    <h2 class="mt-3 mb-2" style="font-family:var(--fonte-titulo);color:var(--cor-fonte);">
+      Página não encontrada
+    </h2>
+
+    <p class="text-secondary mb-5" style="max-width:420px;">
+      Parece que esse endereço não existe no nosso salão.
+      Que tal voltar para o início?
+    </p>
+
+    <a href="/" class="btn-dourado text-decoration-none">
+      <i class="fas fa-home me-2"></i>VOLTAR PARA HOME
+    </a>
+
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/navbar.js"></script>
+
+</body>
+</html>

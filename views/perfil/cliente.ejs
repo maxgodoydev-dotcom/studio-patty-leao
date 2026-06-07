@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head', { titulo: 'Meu Perfil' }) %>
+</head>
+<body data-bs-theme="dark">
+  <%- include('../partials/navbar', { paginaAtiva: 'minha-conta' }) %>
+  <main class="container py-5 mt-4">
+    <div class="text-center mb-5">
+      <h1 class="titulo-servico">Meu Perfil</h1>
+      <div class="mx-auto mt-2" style="width:60px;height:3px;background:var(--cor-dourado);border-radius:2px;"></div>
+      <p class="text-secondary mt-3">Gerencie seus dados, acompanhe agendamentos e reservas.</p>
+    </div>
+    <% if (typeof erro !== 'undefined' && erro) { %><div class="alert alert-danger border-0 small mb-4"><i class="fas fa-exclamation-triangle me-2"></i><%= erro %></div><% } %>
+    <% if (typeof sucesso !== 'undefined' && sucesso) { %><div class="alert alert-success border-0 small mb-4"><i class="fas fa-check-circle me-2"></i><%= sucesso %></div><% } %>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-5">
+        <div class="card p-4 mb-4 text-center">
+          <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" style="width:80px;height:80px;background:rgba(255,196,0,0.1);border:2px solid rgba(255,196,0,0.3);"><i class="fas fa-user fa-2x text-dourado"></i></div>
+          <h5 class="text-dourado fw-bold mb-1"><%= cliente?.nome || usuario.nome || 'Cliente' %></h5>
+          <p class="text-secondary small mb-1"><%= usuario.email %></p>
+          <span class="badge mt-2" style="background:rgba(255,196,0,0.15);color:var(--cor-dourado);font-size:0.7rem;">CLIENTE</span>
+        </div>
+        <div class="card p-4">
+          <h6 class="text-dourado mb-4"><i class="fas fa-pen me-2"></i>Editar Dados</h6>
+          <form action="/perfil/cliente" method="POST">
+            <div class="mb-3"><label class="form-label small text-secondary">Nome completo</label><input type="text" class="form-control" name="nome" value="<%= cliente?.nome || usuario.nome || '' %>" required></div>
+            <div class="mb-3"><label class="form-label small text-secondary">Telefone</label><input type="tel" class="form-control" name="telefone" value="<%= cliente?.telefone || '' %>"></div>
+            <div class="caixa-alergia p-3 mb-4 rounded">
+              <div class="form-check mb-2"><input class="form-check-input" type="checkbox" id="flgAlergico" name="flgAlergico" <%= cliente?.flg_alergico ? 'checked' : '' %> onchange="document.getElementById('campoAlergia').style.display=this.checked?'block':'none'"><label class="form-check-label text-secondary small" for="flgAlergico">Possuo alergia a algum produto</label></div>
+              <div id="campoAlergia" style="display:<%= cliente?.flg_alergico ? 'block' : 'none' %>;"><textarea class="form-control mt-2" name="detalhesAlergia" rows="2" placeholder="Descreva sua alergia..."><%= cliente?.detalhes_alergia || '' %></textarea></div>
+            </div>
+            <button type="submit" class="btn-dourado w-100"><i class="fas fa-save me-2"></i>SALVAR ALTERAÇÕES</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card p-4 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><h6 class="text-dourado mb-0"><i class="fas fa-calendar-alt me-2"></i>Meus Agendamentos</h6><a href="/agendamento" class="btn-dourado text-decoration-none" style="padding:7px 16px;font-size:.85rem;"><i class="fas fa-plus me-1"></i>Novo</a></div>
+          <% if ((agendamentos || []).length) { %>
+            <div class="d-flex flex-column gap-3">
+              <% agendamentos.forEach(a => { const valor = (a.itens || []).reduce((s,i)=>s+(i.valor_cobrado||0),0); %>
+                <div class="p-3 rounded" style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);">
+                  <div class="d-flex justify-content-between gap-2 flex-wrap"><strong><%= (a.itens || []).map(i => i.id_servico?.nome_servico || 'Serviço').join(', ') %></strong><span class="badge bg-secondary"><%= a.status_agendamento %></span></div>
+                  <p class="text-secondary small mb-1"><i class="fas fa-user me-1"></i><%= (a.itens || []).map(i => i.id_profissional?.nome || 'Profissional').join(', ') %></p>
+                  <p class="text-secondary small mb-0"><i class="fas fa-clock me-1"></i><%= new Date(a.data_hora_inicio).toLocaleDateString('pt-BR') %> às <%= new Date(a.data_hora_inicio).toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'}) %></p>
+                  <p class="text-dourado fw-bold small mb-0">R$ <%= valor.toFixed(2).replace('.', ',') %></p>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %><p class="text-secondary small mb-0">Você ainda não possui agendamentos.</p><% } %>
+        </div>
+        <div class="card p-4" id="reservas">
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"><h6 class="text-dourado mb-0"><i class="fas fa-bag-shopping me-2"></i>Minhas Reservas</h6><a href="/vitrine" class="btn btn-outline-warning btn-sm px-3">Ver vitrine</a></div>
+          <% if ((reservas || []).length) { %>
+            <div class="d-flex flex-column gap-3">
+              <% reservas.forEach(r => { const statusMapReserva = { 'Pendente':'bg-warning text-dark', 'Confirmada':'bg-success', 'Retirada':'bg-secondary', 'Cancelada':'bg-danger' }; %>
+                <div class="p-3 rounded d-flex gap-3" style="background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);">
+                  <% if (r.id_produto?.imagem_url) { %><img src="<%= r.id_produto.imagem_url %>" alt="<%= r.id_produto.descricao %>" class="rounded" style="width:72px;height:72px;object-fit:cover;flex-shrink:0;"><% } else { %><div class="rounded d-flex align-items-center justify-content-center" style="width:72px;height:72px;background:rgba(255,255,255,0.05);flex-shrink:0;"><i class="fa-solid fa-image text-muted opacity-25 fa-2x"></i></div><% } %>
+                  <div class="flex-grow-1"><div class="d-flex justify-content-between gap-2 flex-wrap"><strong><%= r.id_produto?.descricao || 'Produto' %></strong><span class="badge <%= statusMapReserva[r.status] || 'bg-secondary' %>"><%= r.status %></span></div><p class="text-dourado small mb-1">R$ <%= Number(r.preco_unitario_reserva || r.id_produto?.preco_venda || 0).toFixed(2).replace('.', ',') %> / un · Qtd: <%= r.quantidade %></p><p class="text-secondary small mb-0">Reservado em: <%= new Date(r.createdAt).toLocaleDateString('pt-BR') %></p><% if (r.data_retirada_prevista) { %><p class="text-secondary small mb-0">Retirada prevista: <%= new Date(r.data_retirada_prevista).toLocaleDateString('pt-BR') %></p><% } %></div>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %><p class="text-secondary small mb-0">Você ainda não possui reservas de produtos.</p><% } %>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%- include('../partials/footer') %>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/navbar.js"></script>
+</body>
+</html>

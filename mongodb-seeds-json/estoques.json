@@ -1,0 +1,242 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000601"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000501"
+    },
+    "quantidade_atual": 8,
+    "quantidade_minima": 3,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000602"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000502"
+    },
+    "quantidade_atual": 14,
+    "quantidade_minima": 4,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000603"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000503"
+    },
+    "quantidade_atual": 10,
+    "quantidade_minima": 4,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000604"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000504"
+    },
+    "quantidade_atual": 4200,
+    "quantidade_minima": 800,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000605"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000505"
+    },
+    "quantidade_atual": 2500,
+    "quantidade_minima": 600,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000606"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000506"
+    },
+    "quantidade_atual": 900,
+    "quantidade_minima": 250,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000607"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000507"
+    },
+    "quantidade_atual": 1600,
+    "quantidade_minima": 400,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000608"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000508"
+    },
+    "quantidade_atual": 1200,
+    "quantidade_minima": 350,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000609"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000509"
+    },
+    "quantidade_atual": 1800,
+    "quantidade_minima": 400,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000610"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000510"
+    },
+    "quantidade_atual": 900,
+    "quantidade_minima": 250,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000611"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000511"
+    },
+    "quantidade_atual": 950,
+    "quantidade_minima": 250,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000612"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000512"
+    },
+    "quantidade_atual": 24,
+    "quantidade_minima": 6,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000613"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000513"
+    },
+    "quantidade_atual": 160,
+    "quantidade_minima": 50,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000614"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000514"
+    },
+    "quantidade_atual": 120,
+    "quantidade_minima": 35,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000615"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000515"
+    },
+    "quantidade_atual": 850,
+    "quantidade_minima": 250,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head', { titulo: 'Minha Agenda Profissional' }) %>
+  <style>
+    .alerta-alergia{display:inline-flex;align-items:center;gap:.3rem;color:#ff5468;font-weight:800;animation:piscaAlerta 1s infinite}
+    @keyframes piscaAlerta{0%,100%{opacity:1}50%{opacity:.35}}
+    .ranking-item{display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,196,0,.12);border-radius:12px;padding:.75rem .9rem;background:rgba(255,255,255,.025)}
+    .valor-negativo{color:#ff5468!important}
+  </style>
+</head>
+<body data-bs-theme="dark">
+  <div class="layout-admin">
+    <%- include('../partials/sidebarAdmin', { paginaAdmin: 'profissional' }) %>
+    <main class="conteudo-admin">
+      <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+        <button class="btn btn-sm btn-outline-warning d-lg-none" id="sidebarOpen" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1 class="text-dourado mb-0" style="font-family:var(--fonte-titulo);font-size:1.8rem;"><i class="fas fa-id-badge me-2"></i>Minha Agenda</h1>
+          <p class="text-secondary small mb-0">Agenda mensal, faturamento de serviços e alertas operacionais</p>
+        </div>
+      </div>
+
+      <% if (typeof erro !== 'undefined' && erro) { %><div class="alert alert-danger border-0 small mb-4"><i class="fas fa-exclamation-triangle me-2"></i><%= erro %></div><% } %>
+      <% if (typeof sucesso !== 'undefined' && sucesso) { %><div class="alert alert-success border-0 small mb-4"><i class="fas fa-check-circle me-2"></i><%= sucesso %></div><% } %>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="card p-4 mb-4 text-center">
+            <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle" style="width:80px;height:80px;background:rgba(255,196,0,0.1);border:2px solid rgba(255,196,0,0.3);"><i class="fas fa-cut fa-2x text-dourado"></i></div>
+            <h5 class="text-dourado fw-bold mb-1"><%= profissional?.nome || 'Profissional' %></h5>
+            <p class="text-secondary small mb-1"><%= usuario.email %></p>
+            <% if (profissional?.especialidade) { %><p class="text-secondary small mb-0"><%= profissional.especialidade %></p><% } %>
+            <span class="badge mt-2" style="background:rgba(255,196,0,0.15);color:var(--cor-dourado);font-size:0.7rem;">PROFISSIONAL</span>
+          </div>
+
+          <div class="card p-4 mb-4">
+            <h6 class="text-dourado mb-4"><i class="fas fa-pen me-2"></i>Editar Dados</h6>
+            <form action="/perfil/profissional" method="POST">
+              <div class="mb-3"><label class="form-label small text-secondary">Nome completo</label><input type="text" class="form-control" name="nome" value="<%= profissional?.nome || '' %>" required></div>
+              <div class="mb-3"><label class="form-label small text-secondary">Especialidade</label><input type="text" class="form-control" name="especialidade" value="<%= profissional?.especialidade || '' %>"></div>
+              <div class="mb-4"><label class="form-label small text-secondary">Telefone</label><input type="tel" class="form-control" name="telefone" value="<%= profissional?.telefone || '' %>"></div>
+              <button type="submit" class="btn-dourado w-100"><i class="fas fa-save me-2"></i>SALVAR ALTERAÇÕES</button>
+            </form>
+          </div>
+
+          <div class="card p-4">
+            <h6 class="text-dourado mb-3"><i class="fas fa-ranking-star me-2"></i>Clientes mais atendidos</h6>
+            <% if ((clientesRanking || []).length) { %>
+              <div class="d-flex flex-column gap-2">
+                <% clientesRanking.forEach((c, idx) => { %><div class="ranking-item"><span><%= idx + 1 %>. <%= c.nome %></span><strong class="text-dourado"><%= c.total %>x</strong></div><% }) %>
+              </div>
+            <% } else { %><p class="text-secondary small mb-0">Ranking aparecerá após atendimentos concluídos.</p><% } %>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="row g-3 mb-4">
+            <div class="col-sm-3"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Hoje</p><h3 class="text-dourado fw-bold mb-0"><%= totalHoje || 0 %></h3></div></div>
+            <div class="col-sm-3"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Mês</p><h3 class="text-dourado fw-bold mb-0"><%= totalAgendamentos || 0 %></h3></div></div>
+            <div class="col-sm-3"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Concluídos</p><h3 class="text-success fw-bold mb-0"><%= totalConcluidos || 0 %></h3></div></div>
+            <div class="col-sm-3"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Cancel./Faltas</p><h3 class="text-danger fw-bold mb-0"><%= totalCanceladosFaltas || 0 %></h3></div></div>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-md-6"><div class="card p-3"><p class="text-secondary small text-uppercase mb-1">Faturado em serviços concluídos</p><h3 class="text-success fw-bold mb-0">R$ <%= Number(faturadoServicos || 0).toFixed(2).replace('.', ',') %></h3><p class="text-secondary small mb-0">Somente atendimentos concluídos no mês.</p></div></div>
+            <div class="col-md-6"><div class="card p-3"><p class="text-secondary small text-uppercase mb-1">Valor de cancelamentos/faltas</p><h3 class="valor-negativo fw-bold mb-0">− R$ <%= Number(valorPerdido || 0).toFixed(2).replace('.', ',') %></h3><p class="text-secondary small mb-0">Não é descontado do faturamento; serve como alerta operacional.</p></div></div>
+          </div>
+
+          <div class="card p-4">
+            <h6 class="text-dourado mb-4"><i class="fas fa-calendar-check me-2"></i>Agenda mensal — <%= mesReferencia || '' %></h6>
+            <% if ((agendamentos || []).length) { %>
+              <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle">
+                  <thead><tr><th>Data/Início</th><th>Fim</th><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <% agendamentos.forEach(a => { const statusMapLocal = statusMap || {}; const data = new Date(a.data_hora_inicio); const valor = (a.itens || []).reduce((s,i)=>s+(i.valor_cobrado||0),0); %>
+                      <tr>
+                        <td class="text-secondary small"><%= data.toLocaleDateString('pt-BR') %> <%= data.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' }) %></td>
+                        <td class="text-secondary small"><%= a.data_hora_fim ? new Date(a.data_hora_fim).toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' }) : '—' %></td>
+                        <td><%= a.id_cliente?.nome || '—' %><% if (a.id_cliente?.flg_alergico) { %><br><span class="alerta-alergia" title="<%= a.id_cliente?.detalhes_alergia || 'Cliente possui alergia' %>"><i class="fas fa-triangle-exclamation"></i> alergia</span><% } %></td>
+                        <td class="small"><%= (a.itens || []).map(i => i.id_servico?.nome_servico || '—').join(', ') %></td>
+                        <td class="text-dourado small fw-bold">R$ <%= valor.toFixed(2).replace('.', ',') %></td>
+                        <td><span class="badge bg-<%= statusMapLocal[a.status_agendamento] || 'secondary' %>"><%= a.status_agendamento %></span></td>
+                      </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            <% } else { %><div class="text-center py-5"><i class="fas fa-calendar-times fa-3x text-dourado mb-3" style="opacity:.3"></i><p class="text-secondary small">Nenhum agendamento encontrado no mês.</p></div><% } %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/admin.js"></script>
+</body>
+</html>

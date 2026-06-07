@@ -1,0 +1,77 @@
+[
+  {
+    "ordem": 1,
+    "arquivo": "usuarios.json",
+    "collection": "usuarios"
+  },
+  {
+    "ordem": 2,
+    "arquivo": "clientes.json",
+    "collection": "clientes"
+  },
+  {
+    "ordem": 3,
+    "arquivo": "profissionals.json",
+    "collection": "profissionals"
+  },
+  {
+    "ordem": 4,
+    "arquivo": "servicos.json",
+    "collection": "servicos"
+  },
+  {
+    "ordem": 5,
+    "arquivo": "produtos.json",
+    "collection": "produtos"
+  },
+  {
+    "ordem": 6,
+    "arquivo": "estoques.json",
+    "collection": "estoques"
+  },
+  {
+    "ordem": 7,
+    "arquivo": "servicoinsumos.json",
+    "collection": "servicoinsumos"
+  },
+  {
+    "ordem": 8,
+    "arquivo": "tipopagtos.json",
+    "collection": "tipopagtos"
+  },
+  {
+    "ordem": 9,
+    "arquivo": "agendamentos.json",
+    "collection": "agendamentos"
+  },
+  {
+    "ordem": 10,
+    "arquivo": "reservavitrines.json",
+    "collection": "reservavitrines"
+  },
+  {
+    "ordem": 11,
+    "arquivo": "movimentacaoestoques.json",
+    "collection": "movimentacaoestoques"
+  },
+  {
+    "ordem": 12,
+    "arquivo": "movimentacaofinanceiras.json",
+    "collection": "movimentacaofinanceiras"
+  },
+  {
+    "ordem": 13,
+    "arquivo": "caixas.json",
+    "collection": "caixas"
+  },
+  {
+    "ordem": 14,
+    "arquivo": "vendas.json",
+    "collection": "vendas"
+  },
+  {
+    "ordem": 15,
+    "arquivo": "fornecedors.json",
+    "collection": "fornecedors"
+  }
+]

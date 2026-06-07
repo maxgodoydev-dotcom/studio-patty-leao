@@ -1,0 +1,82 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000951"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000301"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000501"
+    },
+    "quantidade": 1,
+    "observacao": "Reserva gerada para retirada presencial no salão.",
+    "status": "Confirmada",
+    "data_retirada_prevista": {
+      "$date": "2026-06-09T15:00:00.000Z"
+    },
+    "preco_unitario_reserva": 80.0,
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "createdAt": {
+      "$date": "2026-06-06T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000952"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000302"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000502"
+    },
+    "quantidade": 2,
+    "observacao": "Reserva gerada para retirada presencial no salão.",
+    "status": "Pendente",
+    "data_retirada_prevista": {
+      "$date": "2026-06-10T14:00:00.000Z"
+    },
+    "preco_unitario_reserva": 40.0,
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "createdAt": {
+      "$date": "2026-06-06T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000953"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000305"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000503"
+    },
+    "quantidade": 1,
+    "observacao": "Reserva gerada para retirada presencial no salão.",
+    "status": "Retirada",
+    "data_retirada_prevista": {
+      "$date": "2026-06-06T13:00:00.000Z"
+    },
+    "preco_unitario_reserva": 60.0,
+    "estoque_baixado": true,
+    "data_baixa_estoque": {
+      "$date": "2026-06-06T13:10:00.000Z"
+    },
+    "createdAt": {
+      "$date": "2026-06-06T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head', { titulo: 'Tratamentos Capilares' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <%- include('../partials/navbar', { paginaAtiva: 'galeria' }) %>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="container mt-4">
+      <section class="hero-img hero-tratamento">
+        <div class="hero-overlay">
+          <h1 class="titulo-servico">TRATAMENTO CAPILAR</h1>
+          <p class="subtitulo-servico">Cabelos restaurados, nutridos e saudáveis.</p>
+          <a href="/agendamento" class="btn-dourado text-decoration-none">
+            <i class="fas fa-calendar-check me-2"></i>AGENDAR AVALIAÇÃO
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- BENEFÍCIOS -->
+    <div class="container my-5">
+      <h2 class="titulo-servico definicao mb-4">Benefícios do Tratamento</h2>
+      <div class="row g-4 text-center">
+        <div class="col-md-6 col-lg-4">
+          <div class="beneficio-card">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            <h4>Restaura o Cabelo</h4>
+            <p>Cabelos quebradiços? Não mais. Fios fortes e saudáveis.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="beneficio-card">
+            <i class="fas fa-tint"></i>
+            <h4>Hidratação Profunda</h4>
+            <p>Recupera a umidade perdida e devolve a maciez natural.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="beneficio-card">
+            <i class="fas fa-gem"></i>
+            <h4>Brilho Recuperado</h4>
+            <p>Fios com aparência saudável e luminosa duradoura.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESSO -->
+    <div class="container my-5">
+      <hr>
+      <h2 class="titulo-servico definicao mb-5">Como Funciona</h2>
+      <div class="processo">
+        <div class="etapa"><span>1</span><h5>Diagnóstico</h5></div>
+        <div class="etapa"><span>2</span><h5>Lavagem</h5></div>
+        <div class="etapa"><span>3</span><h5>Aplicação</h5></div>
+        <div class="etapa"><span>4</span><h5>Selagem</h5></div>
+        <div class="etapa"><span>5</span><h5>Finalização</h5></div>
+      </div>
+    </div>
+
+    <!-- TIPOS DE CABELO -->
+    <div class="container my-5">
+      <hr>
+      <h2 class="titulo-servico definicao mb-4">Para Qual Tipo de Cabelo?</h2>
+      <div class="row g-4 text-center">
+        <div class="col-lg-4">
+          <div class="tipo-cabelo">
+            <h3 class="titulo-beneficio">Opaco</h3>
+            <p>Recupera brilho e aparência saudável imediatamente.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="tipo-cabelo">
+            <h3 class="titulo-beneficio">Quebradiço</h3>
+            <p>Fortalece os fios e reduz a quebra progressivamente.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="tipo-cabelo">
+            <h3 class="titulo-beneficio">Com Frizz</h3>
+            <p>Equilibra hidratação e reconstrução para maior controle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <!-- VÍDEO -->
+    <div class="container my-5">
+      <section class="antes-depois-section my-5">
+        <h2 class="titulo-servico definicao mb-4">Resultado Real</h2>
+        <div class="resultado-card">
+          <video controls autoplay muted loop playsinline>
+            <source src="/assets/videos/tratamento.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="text-center mt-3 copy-beneficio">
+          Veja a transformação e o brilho conquistados após o procedimento.
+        </p>
+      </section>
+
+      <section class="cta-servico">
+        <h2 class="titulo-servico">Pronta para recuperar seus cabelos?</h2>
+        <p class="text-secondary my-3">Agende sua avaliação e descubra o tratamento ideal para você.</p>
+        <a href="/agendamento" class="btn-dourado text-decoration-none">
+          <i class="fas fa-calendar-check me-2"></i>AGENDAR AGORA
+        </a>
+      </section>
+    </div>
+
+    <div class="container text-center pb-5">
+      <h5 class="text-secondary mb-3">Explore nossa galeria</h5>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="/progressiva" class="btn btn-outline-warning px-4">Progressivas</a>
+        <a href="/escova" class="btn btn-outline-warning px-4">Escovas</a>
+        <a href="/cronograma" class="btn btn-outline-warning px-4">Cronogramas</a>
+      </div>
+    </div>
+
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/navbar.js"></script>
+
+</body>
+</html>

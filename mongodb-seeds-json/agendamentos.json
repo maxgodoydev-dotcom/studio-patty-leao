@@ -1,0 +1,386 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000901"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000301"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-08T12:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-08T14:30:00.000Z"
+    },
+    "status_agendamento": "Confirmado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001901"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000401"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 180
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-08T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000902"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000302"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-08T15:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-08T16:15:00.000Z"
+    },
+    "status_agendamento": "Agendado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001902"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000402"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000202"
+        },
+        "valor_cobrado": 80
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-08T15:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000903"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000303"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-09T13:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-09T14:00:00.000Z"
+    },
+    "status_agendamento": "Agendado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001903"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000403"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000202"
+        },
+        "valor_cobrado": 50
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-09T13:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000904"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000304"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-10T12:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-10T14:00:00.000Z"
+    },
+    "status_agendamento": "Agendado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001904"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000406"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 120
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-10T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000905"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000305"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-11T15:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-11T18:00:00.000Z"
+    },
+    "status_agendamento": "Agendado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001905"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000407"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 250
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-11T15:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000906"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000306"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-06T13:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-06T13:45:00.000Z"
+    },
+    "status_agendamento": "Concluido",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001906"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000405"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000202"
+        },
+        "valor_cobrado": 35
+      }
+    ],
+    "estoque_baixado": true,
+    "data_baixa_estoque": {
+      "$date": "2026-06-06T14:05:00.000Z"
+    },
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-06T13:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000907"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000308"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-05T16:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-05T17:15:00.000Z"
+    },
+    "status_agendamento": "Faltou",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001907"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000409"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000202"
+        },
+        "valor_cobrado": 35
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-05T16:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000908"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000307"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-04T12:30:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-04T14:00:00.000Z"
+    },
+    "status_agendamento": "Cancelado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001908"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000404"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 150
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-04T12:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000909"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000302"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-03T13:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-03T14:15:00.000Z"
+    },
+    "status_agendamento": "Concluido",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001909"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000410"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 100
+      }
+    ],
+    "estoque_baixado": true,
+    "data_baixa_estoque": {
+      "$date": "2026-06-03T14:20:00.000Z"
+    },
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-03T13:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000910"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000301"
+    },
+    "data_hora_inicio": {
+      "$date": "2026-06-12T12:00:00.000Z"
+    },
+    "data_hora_fim": {
+      "$date": "2026-06-12T14:00:00.000Z"
+    },
+    "status_agendamento": "Reagendado",
+    "itens": [
+      {
+        "_id": {
+          "$oid": "666000000000000000001910"
+        },
+        "id_servico": {
+          "$oid": "666000000000000000000411"
+        },
+        "id_profissional": {
+          "$oid": "666000000000000000000201"
+        },
+        "valor_cobrado": 150
+      }
+    ],
+    "estoque_baixado": false,
+    "data_baixa_estoque": null,
+    "movimentacoes_estoque": [],
+    "createdAt": {
+      "$date": "2026-06-12T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

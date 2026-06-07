@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Seu Xodó é Nossa Prioridade' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <%- include('partials/navbar', { paginaAtiva: 'home' }) %>
+
+  <!-- CAROUSEL -->
+  <div id="carouselHome" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/assets/img/modelo1.jpg" class="d-block w-100" alt="Modelo 1">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/img/modelo2.jpg" class="d-block w-100" alt="Modelo 2">
+      </div>
+      <div class="carousel-item">
+        <img src="/assets/img/modelo3.jpg" class="d-block w-100" alt="Modelo 3">
+      </div>
+    </div>
+
+    <div class="carousel-caption-custom">
+      <h1 class="carousel-titulo" id="carousel-titulo">
+        Nosso Compromisso é Cuidar do Seu Xodó!
+      </h1>
+      <p class="carousel-subtitulo" id="carousel-subtitulo">
+        Serviços cheios de amor e dedicação para o cuidado dos seus cabelos.<br>
+        Agende já e garanta um momento de bem-estar e autocuidado!
+      </p>
+      <a href="/agendamento" class="btn-dourado text-decoration-none">
+        GARANTA JÁ SEU HORÁRIO!
+      </a>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next" aria-label="Próximo">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+
+
+  <!-- ESPECIALIDADES -->
+  <section class="container py-5 mt-3">
+    <div class="text-center mb-5">
+      <h2 class="text-dourado" style="font-family: var(--fonte-titulo);">Nossas Especialidades</h2>
+      <div class="mx-auto mt-2" style="width:60px;height:3px;background:var(--cor-dourado);border-radius:2px;"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-3 col-sm-6">
+        <div class="card p-4 text-center hover-zoom h-100">
+          <i class="fa-solid fa-wand-magic-sparkles text-dourado fa-3x mb-3"></i>
+          <h4 class="text-dourado">Progressivas</h4>
+          <p class="text-secondary">Alinhamento com queratina e selagem para brilho espelhado e durabilidade.</p>
+          <a href="/progressiva" class="btn-dourado mt-auto text-decoration-none" style="padding:8px 20px;font-size:0.85rem;">VER GALERIA</a>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card p-4 text-center hover-zoom h-100">
+          <i class="fa-solid fa-wind text-dourado fa-3x mb-3"></i>
+          <h4 class="text-dourado">Escovas</h4>
+          <p class="text-secondary">Do tamanho P ao Extra G, finalização perfeita para todos os tipos de fio.</p>
+          <a href="/escova" class="btn-dourado mt-auto text-decoration-none" style="padding:8px 20px;font-size:0.85rem;">VER GALERIA</a>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card p-4 text-center hover-zoom h-100">
+          <i class="fa-solid fa-jar text-dourado fa-3x mb-3"></i>
+          <h4 class="text-dourado">Tratamentos</h4>
+          <p class="text-secondary">Botox capilar, hidratação, reconstrução e cauterização para cabelos saudáveis.</p>
+          <a href="/tratamentos" class="btn-dourado mt-auto text-decoration-none" style="padding:8px 20px;font-size:0.85rem;">VER GALERIA</a>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card p-4 text-center hover-zoom h-100">
+          <i class="fa-solid fa-flask text-dourado fa-3x mb-3"></i>
+          <h4 class="text-dourado">Cronogramas</h4>
+          <p class="text-secondary">Protocolo tradicional ou terapêutico personalizado para nutrir e recuperar seus fios.</p>
+          <a href="/cronograma" class="btn-dourado mt-auto text-decoration-none" style="padding:8px 20px;font-size:0.85rem;">VER GALERIA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AVALIAÇÕES -->
+  <section class="py-5" style="background:rgba(8,8,8,0.55);">
+    <div class="container">
+      <div class="text-center">
+        <h2 style="font-family:var(--fonte-titulo);color:var(--cor-dourado);">O que nossas rainhas dizem</h2>
+        <div class="mx-auto mt-2" style="width:60px;height:3px;background:var(--cor-dourado);border-radius:2px;"></div>
+        <p class="text-secondary mt-3">Leia as avaliações reais das nossas clientes no Google.</p>
+        <a href="https://www.google.com/search?hs=X8e&sxsrf=ANbL-n6SXWh6CfW1WObPG7xIYw4TJF_agA:1780687221897&kgmid=/g/11lw26cylt&q=Studio+Patty+Le%C3%A3o&shem=rimspwouoe&shndl=30&kgs=0d8b6aee0ca67be9#lrd=0x94ce533434c1541d:0xc085e7c8801511ec,1,,,," target="_blank" rel="noopener"
+           class="btn btn-outline-warning btn-sm mt-3 px-4">
+          <i class="fab fa-google me-2"></i>Ver avaliações no Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 style="font-family:var(--fonte-titulo);color:var(--cor-dourado);">Onde nos encontrar</h2>
+        <p class="text-secondary mt-2">
+          <i class="fas fa-map-marker-alt me-2 text-warning"></i>
+          Av. Ivirapema, 300 - Parque Bologne, São Paulo - SP
+        </p>
+        <p class="text-secondary small">
+          <i class="fas fa-clock me-1 text-warning"></i>
+          Terça a Sábado · 09h às 18h
+          <span class="ms-3">
+            <i class="fab fa-whatsapp me-1 text-warning"></i>
+            <a href="https://wa.me/5511958481204" class="text-warning text-decoration-none" target="_blank" rel="noopener">(11) 95848-1204</a>
+          </span>
+        </p>
+      </div>
+
+<!-- MAPA -->
+
+      <div class="mapa-container" style="max-width:900px;margin:0 auto;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.33059498629!2d-46.7786247!3d-23.6998855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce533434c1541d%3A0xc085e7c8801511ec!2sStudio%20Patty%20Le%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1780698642909!5m2!1spt-BR!2sbr" 
+        
+        width="900" 
+        
+        height="400" 
+        
+        style="border:0;" 
+        
+        allowfullscreen="" 
+        
+        loading="lazy" 
+        
+        referrerpolicy="no-referrer-when-downgrade">
+    
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA AGENDAR -->
+  <section class="py-5 text-center">
+    <div class="container">
+      <h2 style="font-family:var(--fonte-titulo);color:var(--cor-dourado);" class="mb-3">
+        Pronta para se sentir especial?
+      </h2>
+      <p class="text-secondary mb-4">Agende agora mesmo e garanta seu horário com a Patty.</p>
+      <a href="/agendamento" class="btn-dourado text-decoration-none">AGENDAR AGORA</a>
+      <a href="https://wa.me/5511958481204" class="btn btn-outline-success ms-3 px-4" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp me-2"></i>WHATSAPP
+      </a>
+    </div>
+  </section>
+
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/navbar.js"></script>
+  <script src="/assets/js/carousel.js"></script>
+
+</body>
+</html>

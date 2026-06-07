@@ -1,0 +1,151 @@
+/* =========================================================
+   STUDIO PATTY LEÃO — VITRINE.CSS
+   Estilos para: vitrinedigital.ejs, minhas_reservas.ejs,
+                 admin_reservas.ejs
+   Depende de: base.css (variáveis globais)
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   CARDS DA VITRINE
+   --------------------------------------------------------- */
+
+.vitrine-card {
+  background: var(--cor-bg-card);
+  border: 1px solid var(--cor-borda) !important;
+  border-radius: var(--radius-md);
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.vitrine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px var(--sombra-dourada);
+}
+
+/* ---------------------------------------------------------
+   IMAGEM DO PRODUTO
+   --------------------------------------------------------- */
+
+.vitrine-card-img-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  height: 220px;
+}
+
+.vitrine-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.vitrine-card:hover .vitrine-img {
+  transform: scale(1.05);
+}
+
+.vitrine-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at center, rgba(255,196,0,0.10), transparent 44%),
+    rgba(8, 8, 8, 0.96);
+}
+
+/* ---------------------------------------------------------
+   PREÇO
+   --------------------------------------------------------- */
+
+.vitrine-preco {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cor-dourado);
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------
+   BOTÃO PRINCIPAL DA VITRINE
+   --------------------------------------------------------- */
+
+.btn-vitrine {
+  background: var(--cor-dourado);
+  color: #000;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: background var(--transicao), box-shadow var(--transicao);
+}
+
+.btn-vitrine:hover,
+.btn-vitrine:focus {
+  background: var(--cor-dourado-hover);
+  color: #000;
+  box-shadow: 0 4px 18px var(--sombra-dourada);
+}
+
+/* ---------------------------------------------------------
+   MODAL DE RESERVA
+   --------------------------------------------------------- */
+
+.vitrine-modal {
+  background: #111;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-lg);
+}
+
+.vitrine-modal .modal-header {
+  padding-bottom: 0.5rem;
+}
+
+/* ---------------------------------------------------------
+   INPUTS DA VITRINE (modal e admin)
+   --------------------------------------------------------- */
+
+.vitrine-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--cor-borda) !important;
+  color: var(--cor-fonte) !important;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transicao);
+}
+
+.vitrine-input:focus {
+  border-color: var(--cor-dourado) !important;
+  box-shadow: 0 0 0 3px rgba(255, 196, 0, 0.15) !important;
+  outline: none;
+}
+
+.vitrine-input::placeholder {
+  color: var(--cor-placeholder);
+}
+
+/* Select nativo no tema escuro */
+.vitrine-input option {
+  background: #111;
+  color: var(--cor-fonte);
+}
+
+/* ---------------------------------------------------------
+   TABELA ADMIN
+   --------------------------------------------------------- */
+
+.table-dark {
+  --bs-table-bg: transparent;
+  --bs-table-hover-bg: rgba(255, 196, 0, 0.05);
+}
+
+.table thead th {
+  color: var(--cor-dourado);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   TÍTULO DA SEÇÃO (reutiliza padrão do projeto)
+   --------------------------------------------------------- */
+
+.titulo-servico {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-dourado);
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Recepção' }) %>
+  <style>
+    .agenda-toolbar{display:flex;gap:.65rem;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:1rem}
+    .semana-tabs{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.35rem}
+    .semana-tab{border:1px solid rgba(255,196,0,.25);background:rgba(255,196,0,.06);color:#f5f5f5;border-radius:999px;padding:.45rem .9rem;font-size:.82rem;white-space:nowrap}
+    .semana-tab.active{background:var(--cor-dourado);color:#080808;font-weight:800}
+    .dias-rapidos{display:flex;gap:.5rem;overflow-x:auto;padding:.2rem 0 .5rem}
+    .dia-balcao,.hora-balcao{border:1px solid rgba(255,196,0,.25);background:rgba(255,196,0,.06);color:#f8f8f8;border-radius:10px;padding:.55rem .7rem;min-width:74px;text-align:center;cursor:pointer;transition:.2s}
+    .dia-balcao.active,.hora-balcao.active{background:var(--cor-dourado);color:#050505;font-weight:800}
+    .hora-balcao.indisponivel{opacity:.35;text-decoration:line-through;cursor:not-allowed;background:rgba(255,255,255,.04)}
+    .horarios-balcao{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:.5rem}
+    .alerta-alergia{display:inline-flex;align-items:center;gap:.3rem;color:#ff5468;font-weight:800;animation:piscaAlerta 1s infinite}
+    @keyframes piscaAlerta{0%,100%{opacity:1}50%{opacity:.35}}
+    @media(max-width:768px){.agenda-toolbar{align-items:flex-start}.table-agenda-admin{font-size:.82rem}.recepcao-actions{min-width:170px}}
+  </style>
+</head>
+<body data-bs-theme="dark">
+  <div class="layout-admin">
+    <%- include('partials/sidebarAdmin', { paginaAdmin: 'recepcao' }) %>
+    <main class="conteudo-admin">
+      <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+        <button class="btn btn-sm btn-outline-warning d-lg-none" id="sidebarOpen" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <div>
+          <h1 class="text-dourado mb-0" style="font-family:var(--fonte-titulo);font-size:1.9rem;"><i class="fas fa-calendar-check me-2"></i>Recepção</h1>
+          <p class="text-secondary small mb-0">Agenda mensal, atendimento de balcão e tomada de decisão operacional</p>
+        </div>
+      </div>
+
+      <% if (erro) { %><div class="alert alert-danger border-0 mb-3"><i class="fas fa-triangle-exclamation me-2"></i><%= erro %></div><% } %>
+      <% if (sucesso) { %><div class="alert alert-success border-0 mb-3"><i class="fas fa-check-circle me-2"></i><%= sucesso %></div><% } %>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-3 col-sm-6"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Hoje</p><h3 class="text-dourado fw-bold mb-0"><%= agendadosHoje || 0 %></h3></div></div>
+        <div class="col-md-3 col-sm-6"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Mês</p><h3 class="text-dourado fw-bold mb-0"><%= agendamentosMesTotal || 0 %></h3></div></div>
+        <div class="col-md-3 col-sm-6"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Em atendimento</p><h3 class="text-warning fw-bold mb-0"><%= emAtendimento || 0 %></h3></div></div>
+        <div class="col-md-3 col-sm-6"><div class="card p-3 text-center"><p class="text-secondary small text-uppercase mb-1">Cancelados/Faltas</p><h3 class="text-danger fw-bold mb-0"><%= (cancelados || 0) + (faltas || 0) %></h3></div></div>
+      </div>
+
+      <div class="card p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+          <div>
+            <h6 class="text-dourado mb-1"><i class="fas fa-user-plus me-2"></i>Agendamento rápido de balcão</h6>
+            <p class="text-secondary small mb-0">Escolha o dia e veja apenas horários disponíveis. Horários ocupados ficam bloqueados automaticamente.</p>
+          </div>
+        </div>
+        <form action="/recepcao/agendamento-rapido" method="POST" id="formBalcao" class="row g-3">
+          <div class="col-lg-3 col-md-6"><label class="form-label small text-secondary">Nome do cliente</label><input type="text" name="nome_cliente" class="form-control" placeholder="Ex: Maria Silva" required></div>
+          <div class="col-lg-2 col-md-6"><label class="form-label small text-secondary">Telefone</label><input type="tel" name="telefone_cliente" class="form-control" placeholder="(11) 99999-9999" required></div>
+          <div class="col-lg-3 col-md-6"><label class="form-label small text-secondary">Serviço</label><select name="id_servico" id="balcaoServico" class="form-select" required><option value="">Selecione...</option><% (servicos || []).forEach(s => { %><option value="<%= s._id %>" data-duracao="<%= s.duracao_estimada_min || 60 %>"><%= s.nome_servico %> — R$ <%= Number(s.preco_servico || 0).toFixed(2).replace('.', ',') %></option><% }) %></select></div>
+          <div class="col-lg-2 col-md-6"><label class="form-label small text-secondary">Profissional</label><select name="id_profissional" id="balcaoProfissional" class="form-select" required><option value="">Selecione...</option><% (profissionais || []).forEach(p => { %><option value="<%= p._id %>"><%= p.nome %></option><% }) %></select></div>
+          <div class="col-12"><label class="form-label small text-secondary">Dia disponível</label><div class="dias-rapidos" id="diasBalcao"><% (diasAgenda || []).forEach(d => { %><button class="dia-balcao" type="button" data-date="<%= d.iso %>"><span class="d-block small opacity-75"><%= d.semana %></span><strong><%= d.dia %></strong><span class="d-block small opacity-75"><%= d.mes %></span></button><% }) %></div></div>
+          <div class="col-12"><label class="form-label small text-secondary">Horários</label><div class="horarios-balcao" id="horariosBalcao"><span class="text-secondary small">Selecione serviço, profissional e dia.</span></div></div>
+          <div class="col-lg-4 col-md-6"><div class="form-check mt-2"><input class="form-check-input" type="checkbox" id="balcaoAlergia" name="flg_alergico"><label class="form-check-label small text-secondary" for="balcaoAlergia">Cliente informou alergia</label></div></div>
+          <div class="col-lg-8 col-md-6"><input type="text" name="detalhes_alergia" class="form-control" placeholder="Detalhe da alergia, se houver"></div>
+          <input type="hidden" name="data_hora_inicio" id="balcaoDataHora" required>
+          <div class="col-12 d-flex justify-content-end"><button type="submit" class="btn-dourado px-4" id="btnBalcao" disabled><i class="fas fa-calendar-plus me-2"></i>Agendar cliente</button></div>
+        </form>
+      </div>
+
+      <div class="card p-3">
+        <div class="agenda-toolbar">
+          <div>
+            <h6 class="text-dourado mb-1">Agenda mensal — <%= mesReferencia %></h6>
+            <p class="text-secondary small mb-0">Transite entre as semanas para acompanhar clientes, serviços, status, preços e alertas.</p>
+          </div>
+          <a href="/agendamento" class="btn-dourado text-decoration-none" style="padding:7px 16px;font-size:.85rem;"><i class="fas fa-plus me-1"></i>Novo</a>
+        </div>
+        <div class="semana-tabs mb-3" id="semanaTabs"></div>
+        <div class="table-responsive">
+          <table class="table table-dark table-hover align-middle table-agenda-admin">
+            <thead><tr><th>Data</th><th>Início</th><th>Fim</th><th>Cliente</th><th>Serviço</th><th>Profissional</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead>
+            <tbody id="agendaMesBody">
+              <% if ((agendamentos || []).length) { %>
+                <% agendamentos.forEach(a => { const valor = (a.itens || []).reduce((s,i)=>s+(i.valor_cobrado||0),0); const data = new Date(a.data_hora_inicio); const semanaIdx = Math.ceil(data.getDate()/7); const statusMapLocal = statusMap || {}; %>
+                  <tr data-week="<%= semanaIdx %>">
+                    <td class="small"><%= data.toLocaleDateString('pt-BR') %></td>
+                    <td class="small"><%= data.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' }) %></td>
+                    <td class="small"><%= a.data_hora_fim ? new Date(a.data_hora_fim).toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' }) : '—' %></td>
+                    <td><%= a.id_cliente?.nome || 'Cliente' %><% if (a.id_cliente?.flg_alergico) { %><br><span class="alerta-alergia" title="<%= a.id_cliente?.detalhes_alergia || 'Cliente possui alergia' %>"><i class="fas fa-triangle-exclamation"></i> alergia</span><% } %></td>
+                    <td class="small"><%= (a.itens || []).map(i => i.id_servico?.nome_servico || '—').join(', ') %></td>
+                    <td class="small"><%= (a.itens || []).map(i => i.id_profissional?.nome || '—').join(', ') %></td>
+                    <td class="text-dourado fw-bold small">R$ <%= valor.toFixed(2).replace('.', ',') %></td>
+                    <td><span class="badge bg-<%= statusMapLocal[a.status_agendamento] || 'secondary' %>"><%= a.status_agendamento %></span></td>
+                    <td class="recepcao-actions">
+                      <form action="/agendamento/<%= a._id %>/status" method="POST" class="d-flex gap-1 flex-wrap">
+                        <select name="status" class="form-select form-select-sm w-auto" onchange="this.form.submit()"><% ['Agendado','Confirmado','Em Atendimento','Concluido','Cancelado','Faltou','Reagendado'].forEach(st => { %><option value="<%= st %>" <%= a.status_agendamento === st ? 'selected' : '' %>><%= st %></option><% }) %></select>
+                        <select name="forma_pagamento" class="form-select form-select-sm w-auto"><option value="Não informado">Pagamento</option><option value="Dinheiro">Dinheiro</option><option value="PIX presencial">PIX presencial</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              <% } else { %><tr><td colspan="9" class="text-center text-secondary py-4"><i class="fas fa-calendar-times fa-2x mb-2 d-block opacity-25"></i>Nenhum agendamento neste mês.</td></tr><% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/admin.js"></script>
+  <script>
+    const HORARIOS = ["09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30"];
+    let dataBalcao = null;
+    const btnBalcao = document.getElementById('btnBalcao');
+    function ativarSemana(semana){
+      document.querySelectorAll('.semana-tab').forEach(b=>b.classList.toggle('active', b.dataset.week == semana));
+      document.querySelectorAll('#agendaMesBody tr[data-week]').forEach(tr=>tr.style.display = tr.dataset.week == semana ? '' : 'none');
+    }
+    (function montarSemanas(){
+      const semanas = new Set([...document.querySelectorAll('#agendaMesBody tr[data-week]')].map(tr=>tr.dataset.week));
+      const tabs = document.getElementById('semanaTabs');
+      if(!tabs) return;
+      if(!semanas.size){ tabs.innerHTML = '<span class="text-secondary small">Sem semanas com agenda.</span>'; return; }
+      [...semanas].sort((a,b)=>a-b).forEach((w,idx)=>{ const b=document.createElement('button'); b.type='button'; b.className='semana-tab'+(idx===0?' active':''); b.dataset.week=w; b.textContent='Semana '+w; b.onclick=()=>ativarSemana(w); tabs.appendChild(b); });
+      ativarSemana([...semanas].sort((a,b)=>a-b)[0]);
+    })();
+    document.querySelectorAll('.dia-balcao').forEach(btn=>btn.addEventListener('click',()=>{ document.querySelectorAll('.dia-balcao').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); dataBalcao=btn.dataset.date; carregarHorariosBalcao(); }));
+    document.getElementById('balcaoServico').addEventListener('change', carregarHorariosBalcao);
+    document.getElementById('balcaoProfissional').addEventListener('change', carregarHorariosBalcao);
+    async function carregarHorariosBalcao(){
+      const servico = document.getElementById('balcaoServico').value;
+      const prof = document.getElementById('balcaoProfissional').value;
+      const grid = document.getElementById('horariosBalcao');
+      document.getElementById('balcaoDataHora').value=''; btnBalcao.disabled=true;
+      if(!servico || !prof || !dataBalcao){ grid.innerHTML='<span class="text-secondary small">Selecione serviço, profissional e dia.</span>'; return; }
+      grid.innerHTML='<span class="text-secondary small">Consultando horários...</span>';
+      try{
+        const resp=await fetch(`/agendamentos/disponibilidade?data=${encodeURIComponent(dataBalcao)}&id_servico=${encodeURIComponent(servico)}&id_profissional=${encodeURIComponent(prof)}`);
+        const payload=await resp.json();
+        grid.innerHTML='';
+        (payload.horarios || []).forEach(h=>{ const b=document.createElement('button'); b.type='button'; b.className='hora-balcao'+(!h.disponivel?' indisponivel':''); b.textContent=h.horario; b.disabled=!h.disponivel; b.title=h.disponivel?'Disponível':'Ocupado ou fora do expediente'; if(h.disponivel){ b.onclick=()=>{ document.querySelectorAll('.hora-balcao').forEach(x=>x.classList.remove('active')); b.classList.add('active'); document.getElementById('balcaoDataHora').value=`${dataBalcao}T${h.horario}`; btnBalcao.disabled=false; }; } grid.appendChild(b); });
+      }catch(e){ grid.innerHTML='<span class="text-danger small">Erro ao buscar disponibilidade.</span>'; }
+    }
+  </script>
+</body>
+</html>

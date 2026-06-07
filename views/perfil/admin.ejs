@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('../partials/head', { titulo: 'Meu Perfil' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <div class="layout-admin">
+
+    <%- include('../partials/sidebarAdmin', { paginaAdmin: '' }) %>
+
+    <main class="conteudo-admin">
+
+      <!-- HEADER -->
+      <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+        <button class="btn btn-sm btn-outline-warning d-lg-none" id="sidebarOpen" aria-label="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div>
+          <h1 class="text-dourado mb-0" style="font-family:var(--fonte-titulo);font-size:1.8rem;">
+            <i class="fas fa-user-shield me-2"></i>Meu Perfil
+          </h1>
+          <p class="text-secondary small mb-0">Visão geral da plataforma e seus dados</p>
+        </div>
+      </div>
+
+      <% if (typeof erro !== 'undefined' && erro) { %>
+        <div class="alert alert-danger border-0 small mb-4">
+          <i class="fas fa-exclamation-triangle me-2"></i><%= erro %>
+        </div>
+      <% } %>
+
+      <% if (typeof sucesso !== 'undefined' && sucesso) { %>
+        <div class="alert alert-success border-0 small mb-4">
+          <i class="fas fa-check-circle me-2"></i><%= sucesso %>
+        </div>
+      <% } %>
+
+      <div class="row g-4">
+
+        <!-- COLUNA ESQUERDA: DADOS -->
+        <div class="col-lg-4">
+
+          <!-- AVATAR + IDENTIFICAÇÃO -->
+          <div class="card p-4 mb-4 text-center">
+            <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="width:80px;height:80px;background:rgba(255,196,0,0.1);border:2px solid rgba(255,196,0,0.3);">
+              <i class="fas fa-user-shield fa-2x text-dourado"></i>
+            </div>
+            <h5 class="text-dourado fw-bold mb-1"><%= usuario.nome || usuario.email %></h5>
+            <% if (usuario.nome) { %><p class="text-secondary small mb-1"><%= usuario.email %></p><% } %>
+            <p class="text-secondary small mb-0">Dados sensíveis protegidos</p>
+            <span class="badge mt-2" style="background:rgba(255,196,0,0.15);color:var(--cor-dourado);font-size:0.7rem;">
+              ADMINISTRADOR
+            </span>
+          </div>
+
+          <!-- INFORMAÇÕES DA CONTA -->
+          <div class="card p-4">
+            <h6 class="text-dourado mb-3">
+              <i class="fas fa-info-circle me-2"></i>Dados da Conta
+            </h6>
+            <ul class="list-unstyled small text-secondary mb-0">
+              <li class="mb-2">
+                <span class="text-muted">E-mail:</span>
+                <span class="text-white ms-2"><%= usuario.email %></span>
+              </li>
+              <li class="mb-2">
+                <span class="text-muted">Perfil:</span>
+                <span class="text-dourado ms-2 fw-bold"><%= (usuario.permissoes || []).join(' · ') || usuario.tipo_perfil %></span>
+              </li>
+              <li class="mb-2">
+                <span class="text-muted">Conta criada:</span>
+                <span class="text-white ms-2">
+                  <%= new Date(usuario.createdAt).toLocaleDateString('pt-BR') %>
+                </span>
+              </li>
+              <li>
+                <span class="text-muted">Status:</span>
+                <span class="badge bg-success ms-2" style="font-size:0.7rem;">Ativo</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- EDIÇÃO DA CONTA -->
+          <div class="card p-4 mt-4">
+            <h6 class="text-dourado mb-3">
+              <i class="fas fa-pen-to-square me-2"></i>Editar meus dados
+            </h6>
+            <form action="/perfil/admin" method="POST" class="row g-3">
+              <div class="col-12">
+                <label class="form-label small text-secondary">Nome</label>
+                <input type="text" name="nome" class="form-control" value="<%= usuario.nome || '' %>" placeholder="Seu nome">
+              </div>
+              <div class="col-12">
+                <label class="form-label small text-secondary">E-mail</label>
+                <input type="email" name="email" class="form-control" value="<%= usuario.email %>" required>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-dourado w-100">
+                  <i class="fas fa-save me-2"></i>Salvar dados
+                </button>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+
+        <!-- COLUNA DIREITA: VISÃO GERAL DA PLATAFORMA -->
+        <div class="col-lg-8">
+
+          <!-- KPIs -->
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+              <div class="card p-3 text-center">
+                <p class="text-secondary small text-uppercase mb-1">Clientes</p>
+                <h3 class="text-dourado fw-bold mb-0"><%= typeof totalClientes !== 'undefined' ? totalClientes : '—' %></h3>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card p-3 text-center">
+                <p class="text-secondary small text-uppercase mb-1">Profissionais</p>
+                <h3 class="text-dourado fw-bold mb-0"><%= typeof totalProfissionais !== 'undefined' ? totalProfissionais : '—' %></h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- ATALHOS RÁPIDOS -->
+          <div class="card p-4">
+            <h6 class="text-dourado mb-4">
+              <i class="fas fa-th-large me-2"></i>Acesso Rápido
+            </h6>
+
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <a href="/admin" class="card p-3 text-decoration-none d-flex flex-row align-items-center gap-3"
+                  style="transition:border-color 0.2s;"
+                  onmouseover="this.style.borderColor='var(--cor-dourado)'"
+                  onmouseout="this.style.borderColor=''">
+                  <i class="fas fa-chart-pie fa-lg text-dourado"></i>
+                  <div>
+                    <p class="text-dourado fw-bold small mb-0">BI Central</p>
+                    <p class="text-secondary" style="font-size:0.75rem;margin:0;">Dashboard geral</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a href="/recepcao" class="card p-3 text-decoration-none d-flex flex-row align-items-center gap-3"
+                  style="transition:border-color 0.2s;"
+                  onmouseover="this.style.borderColor='var(--cor-dourado)'"
+                  onmouseout="this.style.borderColor=''">
+                  <i class="fas fa-calendar-check fa-lg text-dourado"></i>
+                  <div>
+                    <p class="text-dourado fw-bold small mb-0">Recepção</p>
+                    <p class="text-secondary" style="font-size:0.75rem;margin:0;">Agenda do dia</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a href="/estoque" class="card p-3 text-decoration-none d-flex flex-row align-items-center gap-3"
+                  style="transition:border-color 0.2s;"
+                  onmouseover="this.style.borderColor='var(--cor-dourado)'"
+                  onmouseout="this.style.borderColor=''">
+                  <i class="fas fa-boxes fa-lg text-dourado"></i>
+                  <div>
+                    <p class="text-dourado fw-bold small mb-0">Estoque</p>
+                    <p class="text-secondary" style="font-size:0.75rem;margin:0;">Produtos e insumos</p>
+                  </div>
+                </a>
+              </div>
+
+              <% if ((usuario.permissoes || []).includes('PROFISSIONAL')) { %>
+              <div class="col-sm-6">
+                <a href="/perfil/profissional" class="card p-3 text-decoration-none d-flex flex-row align-items-center gap-3"
+                  style="transition:border-color 0.2s;"
+                  onmouseover="this.style.borderColor='var(--cor-dourado)'"
+                  onmouseout="this.style.borderColor=''">
+                  <i class="fas fa-scissors fa-lg text-dourado"></i>
+                  <div>
+                    <p class="text-dourado fw-bold small mb-0">Minha Agenda</p>
+                    <p class="text-secondary" style="font-size:0.75rem;margin:0;">Atendimentos da profissional</p>
+                  </div>
+                </a>
+              </div>
+              <% } %>
+              <div class="col-sm-6">
+                <a href="/financeiro" class="card p-3 text-decoration-none d-flex flex-row align-items-center gap-3"
+                  style="transition:border-color 0.2s;"
+                  onmouseover="this.style.borderColor='var(--cor-dourado)'"
+                  onmouseout="this.style.borderColor=''">
+                  <i class="fas fa-chart-line fa-lg text-dourado"></i>
+                  <div>
+                    <p class="text-dourado fw-bold small mb-0">Financeiro</p>
+                    <p class="text-secondary" style="font-size:0.75rem;margin:0;">Caixa manual</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-4 mt-4">
+            <h6 class="text-dourado mb-3"><i class="fas fa-user-plus me-2"></i>Cadastrar profissional</h6>
+            <form action="/perfil/admin/profissionais" method="POST" class="row g-3">
+              <div class="col-md-6"><label class="form-label small text-secondary">Nome</label><input class="form-control" name="nome" placeholder="Nome da profissional" required></div>
+              <div class="col-md-6"><label class="form-label small text-secondary">E-mail de acesso</label><input class="form-control" type="email" name="email" placeholder="profissional@studio.com" required></div>
+              <div class="col-md-6"><label class="form-label small text-secondary">Especialidade</label><input class="form-control" name="especialidade" placeholder="Ex: corte, coloração, escovas"></div>
+              <div class="col-md-4"><label class="form-label small text-secondary">Telefone</label><input class="form-control" name="telefone"></div>
+              <div class="col-md-2"><label class="form-label small text-secondary">Senha</label><input class="form-control" name="senha" value="Admin@2026"></div>
+              <div class="col-12"><button class="btn-dourado" type="submit"><i class="fas fa-save me-2"></i>Cadastrar profissional</button></div>
+            </form>
+          </div>
+
+          <div class="card p-4 mt-4">
+            <h6 class="text-dourado mb-3"><i class="fas fa-scissors me-2"></i>Profissionais cadastradas</h6>
+            <div class="table-responsive">
+              <table class="table table-dark table-hover align-middle">
+                <thead><tr><th>Nome</th><th>E-mail</th><th>Especialidade</th><th>Status</th></tr></thead>
+                <tbody>
+                  <% if ((profissionais || []).length) { %>
+                    <% profissionais.forEach(p => { %>
+                      <tr><td><%= p.nome %></td><td class="small"><%= p.id_usuario?.email || '—' %></td><td class="small text-secondary"><%= p.especialidade || '—' %></td><td><span class="badge bg-<%= p.flg_ativo ? 'success' : 'secondary' %>"><%= p.flg_ativo ? 'Ativa' : 'Inativa' %></span></td></tr>
+                    <% }) %>
+                  <% } else { %>
+                    <tr><td colspan="4" class="text-center text-secondary py-3">Nenhuma profissional cadastrada.</td></tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/admin.js"></script>
+
+</body>
+</html>

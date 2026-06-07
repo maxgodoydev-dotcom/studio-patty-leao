@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Controle de Estoque' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <div class="layout-admin">
+
+    <%- include('partials/sidebarAdmin', { paginaAdmin: 'estoque' }) %>
+
+    <main class="conteudo-admin">
+
+      <!-- HEADER -->
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <!-- botão mobile para abrir sidebar -->
+          <button class="btn btn-sm btn-outline-warning d-lg-none" id="sidebarOpen" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div>
+            <h1 class="text-dourado mb-0" style="font-family:var(--fonte-titulo);font-size:1.8rem;">
+              <i class="fas fa-boxes me-2"></i>Controle de Estoque
+            </h1>
+            <p class="text-secondary small mb-0">Gerencie os produtos e insumos do salão</p>
+          </div>
+        </div>
+        <button class="btn-dourado" data-bs-toggle="modal" data-bs-target="#modalNovoProduto">
+          <i class="fas fa-plus me-2"></i>Novo Produto
+        </button>
+      </div>
+
+      <!-- CARDS KPI -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-4 col-sm-6">
+          <div class="card p-3 text-center">
+            <p class="text-secondary small text-uppercase mb-1">Itens Registrados</p>
+            <h3 class="text-dourado fw-bold mb-0">
+              <%= typeof totalItens !== 'undefined' ? totalItens : '—' %>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card p-3 text-center">
+            <p class="text-secondary small text-uppercase mb-1">Estoque Crítico</p>
+            <h3 class="text-danger fw-bold mb-0">
+              <%= typeof itensCriticos !== 'undefined' ? itensCriticos : '—' %>
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="card p-3 text-center">
+            <p class="text-secondary small text-uppercase mb-1">Valor em Estoque</p>
+            <h3 class="text-success fw-bold mb-0">
+              R$ <%= typeof valorEstoque !== 'undefined' ? valorEstoque.toFixed(2) : '0,00' %>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA -->
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h6 class="text-dourado mb-0">Produtos</h6>
+          <input type="text" class="form-control form-control-sm" id="buscaProduto"
+            placeholder="Buscar produto..." style="max-width:260px;" oninput="filtrarTabela()">
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-dark table-hover align-middle" id="tabelaEstoque">
+            <thead>
+              <tr>
+                <th class="text-secondary small">SKU</th>
+                <th class="text-secondary small">Produto</th>
+                <th class="text-secondary small">Qtd. Atual</th>
+                <th class="text-secondary small">Unidade</th>
+                <th class="text-secondary small">Qtd. Mínima</th>
+                <th class="text-secondary small">Status</th>
+                <th class="text-secondary small">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (typeof estoque !== 'undefined' && estoque.length) { %>
+                <% estoque.forEach(item => { %>
+                  <tr>
+                    <td class="text-secondary small"><%= item.id_produto?.sku || '—' %></td>
+                    <td><%= item.id_produto?.descricao || '—' %></td>
+                    <td><%= item.quantidade_atual %></td>
+                    <td class="text-secondary small"><%= item.id_produto?.unidade_medida || 'un' %></td>
+                    <td><%= item.quantidade_minima %></td>
+                    <td>
+                      <% if (item.quantidade_atual <= item.quantidade_minima) { %>
+                        <span class="badge bg-danger">Crítico</span>
+                      <% } else { %>
+                        <span class="badge bg-success">OK</span>
+                      <% } %>
+                    </td>
+                    <td>
+                      <div class="d-flex flex-wrap gap-1">
+                        <form action="/estoque/<%= item.id_produto?._id %>/entrada" method="POST" class="d-flex gap-1">
+                          <input type="number" name="quantidade" min="0.001" step="0.001" class="form-control form-control-sm confirmar" placeholder="Qtd" style="width:80px" required>
+                          <button class="btn btn-sm btn-outline-success" title="Entrada manual">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </form>
+                        <form action="/estoque/<%= item.id_produto?._id %>/saida" method="POST" class="d-flex gap-1">
+                          <input type="number" name="quantidade" min="0.001" step="0.001" class="form-control form-control-sm confirmar" placeholder="Qtd" style="width:80px" required>
+                          <button class="btn btn-sm btn-outline-danger" title="Saída manual">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="7" class="text-center text-secondary py-4">
+                    <i class="fas fa-box-open fa-2x mb-2 d-block opacity-25"></i>
+                    Nenhum item no estoque ainda.
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HISTÓRICO DE MOVIMENTAÇÕES -->
+      <div class="card p-3 mt-4">
+        <h6 class="text-dourado mb-3"><i class="fas fa-history me-2"></i>Últimas movimentações</h6>
+        <div class="table-responsive">
+          <table class="table table-dark table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th class="text-secondary small">Data</th>
+                <th class="text-secondary small">Produto</th>
+                <th class="text-secondary small">Tipo</th>
+                <th class="text-secondary small">Origem</th>
+                <th class="text-secondary small">Qtd.</th>
+                <th class="text-secondary small">Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (typeof movimentacoes !== 'undefined' && movimentacoes.length) { %>
+                <% movimentacoes.forEach(mov => { %>
+                  <tr>
+                    <td class="small text-secondary"><%= new Date(mov.createdAt).toLocaleString('pt-BR') %></td>
+                    <td><%= mov.id_produto?.descricao || '—' %></td>
+                    <td>
+                      <% if (mov.tipo === 'ENTRADA') { %>
+                        <span class="badge bg-success">Entrada</span>
+                      <% } else { %>
+                        <span class="badge bg-danger">Saída</span>
+                      <% } %>
+                    </td>
+                    <td class="small"><%= mov.origem || 'MANUAL' %></td>
+                    <td><%= mov.quantidade %></td>
+                    <td class="small text-secondary"><%= mov.saldo_anterior %> → <%= mov.saldo_posterior %></td>
+                  </tr>
+                <% }); %>
+              <% } else { %>
+                <tr>
+                  <td colspan="6" class="text-center text-secondary py-4">Nenhuma movimentação registrada ainda.</td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODAL NOVO PRODUTO -->
+  <div class="modal fade" id="modalNovoProduto" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background:var(--cor-bg-2);border:1px solid var(--cor-borda);">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-dourado">Novo Produto</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/estoque" method="POST">
+            <div class="mb-3">
+              <label class="form-label small text-secondary">SKU</label>
+              <input type="text" class="form-control confirmar" name="sku" placeholder="Ex: CAP-001">
+            </div>
+            <div class="mb-3">
+              <label class="form-label small text-secondary">Descrição</label>
+              <input type="text" class="form-control confirmar" name="descricao" placeholder="Nome do produto" required>
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label small text-secondary">Custo Unitário (R$)</label>
+                <input type="number" class="form-control confirmar" name="custo_unitario" min="0" step="0.01" required>
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label small text-secondary">Preço de Venda (R$)</label>
+                <input type="number" class="form-control confirmar" name="preco_venda" min="0" step="0.01" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label small text-secondary">Unidade</label>
+                <input type="text" class="form-control confirmar" name="unidade_medida" placeholder="un, ml, g" value="un">
+              </div>
+              <div class="col-6 mb-3 d-flex align-items-end gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="flg_insumo" checked id="flgInsumo">
+                  <label class="form-check-label small text-secondary" for="flgInsumo">Insumo</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="flg_venda" id="flgVenda">
+                  <label class="form-check-label small text-secondary" for="flgVenda">Vitrine</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label small text-secondary">Qtd. Inicial</label>
+                <input type="number" class="form-control confirmar" name="quantidade_inicial" min="0" step="0.001" value="0" required>
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label small text-secondary">Qtd. Mínima</label>
+                <input type="number" class="form-control confirmar" name="quantidade_minima" min="0" step="0.001" value="0" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-dourado w-100">
+              <i class="fas fa-save me-2"></i>SALVAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/admin.js"></script>
+  <script>
+    function filtrarTabela() {
+      const termo = document.getElementById('buscaProduto').value.toLowerCase();
+      document.querySelectorAll('#tabelaEstoque tbody tr').forEach(tr => {
+        tr.style.display = tr.innerText.toLowerCase().includes(termo) ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

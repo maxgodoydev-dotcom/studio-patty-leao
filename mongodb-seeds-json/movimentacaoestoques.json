@@ -1,0 +1,120 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000001001"
+    },
+    "id_estoque": {
+      "$oid": "666000000000000000000604"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000504"
+    },
+    "tipo": "SAIDA",
+    "origem": "ATENDIMENTO",
+    "quantidade": 35,
+    "saldo_anterior": 4235,
+    "saldo_posterior": 4200,
+    "id_agendamento": {
+      "$oid": "666000000000000000000906"
+    },
+    "id_reserva_vitrine": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": "Baixa automática por corte concluído.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000001002"
+    },
+    "id_estoque": {
+      "$oid": "666000000000000000000615"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000515"
+    },
+    "tipo": "SAIDA",
+    "origem": "ATENDIMENTO",
+    "quantidade": 12,
+    "saldo_anterior": 862,
+    "saldo_posterior": 850,
+    "id_agendamento": {
+      "$oid": "666000000000000000000906"
+    },
+    "id_reserva_vitrine": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": "Baixa automática por corte concluído.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000001003"
+    },
+    "id_estoque": {
+      "$oid": "666000000000000000000603"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000503"
+    },
+    "tipo": "SAIDA",
+    "origem": "RESERVA_VITRINE",
+    "quantidade": 1,
+    "saldo_anterior": 11,
+    "saldo_posterior": 10,
+    "id_agendamento": null,
+    "id_reserva_vitrine": {
+      "$oid": "666000000000000000000953"
+    },
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": "Reserva retirada presencialmente.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000001004"
+    },
+    "id_estoque": {
+      "$oid": "666000000000000000000602"
+    },
+    "id_produto": {
+      "$oid": "666000000000000000000502"
+    },
+    "tipo": "ENTRADA",
+    "origem": "MANUAL",
+    "quantidade": 5,
+    "saldo_anterior": 9,
+    "saldo_posterior": 14,
+    "id_agendamento": null,
+    "id_reserva_vitrine": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": "Reposição manual para vitrine.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

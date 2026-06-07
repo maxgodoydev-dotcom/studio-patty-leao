@@ -1,0 +1,17 @@
+{
+  "usuarios.json": "usuarios",
+  "clientes.json": "clientes",
+  "profissionals.json": "profissionals",
+  "servicos.json": "servicos",
+  "produtos.json": "produtos",
+  "estoques.json": "estoques",
+  "servicoinsumos.json": "servicoinsumos",
+  "agendamentos.json": "agendamentos",
+  "reservavitrines.json": "reservavitrines",
+  "movimentacaoestoques.json": "movimentacaoestoques",
+  "movimentacaofinanceiras.json": "movimentacaofinanceiras",
+  "caixas.json": "caixas",
+  "tipopagtos.json": "tipopagtos",
+  "vendas.json": "vendas",
+  "fornecedors.json": "fornecedors"
+}

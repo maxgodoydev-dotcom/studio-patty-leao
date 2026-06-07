@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Agendar Serviço' }) %>
+  <style>
+    .agenda-shell{max-width:980px;margin:0 auto}.agenda-card{background:rgba(5,5,5,.78);border:1px solid rgba(255,196,0,.14);border-radius:22px;padding:clamp(1.25rem,3vw,2rem);box-shadow:0 22px 60px rgba(0,0,0,.35)}
+    .agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}.agenda-full{grid-column:1/-1}.label-secao{color:var(--cor-dourado);font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.55rem;font-weight:800}
+    .calendario-semana{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:.65rem}.dia-btn{padding:.75rem .5rem;background:rgba(255,196,0,.06);border:1px solid rgba(255,196,0,.2);border-radius:12px;color:#fff;cursor:pointer;text-align:center}.dia-btn.selected{background:var(--cor-dourado);color:#050505;font-weight:800}.dia-btn.fechado{opacity:.28;cursor:not-allowed;pointer-events:none}
+    .horarios-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:.55rem}.horario-btn{background:rgba(255,196,0,.08);border:1px solid rgba(255,196,0,.24);color:#fff;padding:.65rem .35rem;border-radius:10px;cursor:pointer}.horario-btn.selected{background:var(--cor-dourado);color:#050505;font-weight:900}.horario-btn:disabled,.horario-btn.ocupado{opacity:.35;text-decoration:line-through;cursor:not-allowed;background:rgba(255,255,255,.04)}
+    @media(max-width:768px){.agenda-grid{grid-template-columns:1fr}.agenda-card{border-radius:16px}.calendario-semana{display:flex;overflow-x:auto}.dia-btn{min-width:76px}.titulo-servico{font-size:2rem!important}}
+  </style>
+</head>
+<body data-bs-theme="dark">
+  <%- include('partials/navbar', { paginaAtiva: 'agendamento' }) %>
+  <main class="container py-5 mt-3">
+    <div class="text-center mb-5"><h1 class="titulo-servico">Agendar Serviço</h1><div class="mx-auto mt-2" style="width:60px;height:3px;background:var(--cor-dourado);border-radius:2px;"></div><p class="text-secondary mt-3">Escolha serviço, profissional, dia e horário disponível.</p></div>
+    <% if (typeof usuario === 'undefined' || !usuario) { %>
+      <div class="text-center py-5"><i class="fas fa-lock text-dourado fa-4x mb-4" style="opacity:.6"></i><h4 class="text-dourado mb-3">Faça login para agendar</h4><p class="text-secondary mb-4">Para garantir seu horário, você precisa estar logado.</p><a href="/login" class="btn-dourado text-decoration-none me-3">ENTRAR</a><a href="/cadastro" class="btn btn-outline-warning btn-sm px-4 py-2 ms-2">CADASTRAR</a></div>
+    <% } else { %>
+      <div class="agenda-shell">
+        <div class="agenda-card">
+          <p class="text-secondary small mb-4">Olá, <span class="text-dourado fw-bold"><%= usuario.nome || usuario.email %></span>! O sistema mostra apenas horários compatíveis com a duração do serviço e disponibilidade da profissional.</p>
+          <% if (typeof erro !== 'undefined' && erro) { %><div class="alert alert-danger border-0 small mb-3"><i class="fas fa-exclamation-triangle me-2"></i><%= erro %></div><% } %>
+          <% if (typeof sucesso !== 'undefined' && sucesso) { %><div class="alert alert-success border-0 small mb-3"><i class="fas fa-check-circle me-2"></i><%= sucesso %></div><% } %>
+          <form action="/agendamento" method="POST" id="formAgendamento" class="agenda-grid">
+            <div><label class="label-secao"><i class="fas fa-cut me-1"></i> Serviço</label><select class="form-select" id="servico" name="id_servico" required><option value="">Selecione um serviço...</option><% (servicos || []).forEach(s => { %><option value="<%= s._id %>" data-duracao="<%= s.duracao_estimada_min || 60 %>"><%= s.nome_servico %> — R$ <%= Number(s.preco_servico || 0).toFixed(2).replace('.', ',') %></option><% }) %></select></div>
+            <div><label class="label-secao"><i class="fas fa-user me-1"></i> Profissional</label><select class="form-select" id="profissional" name="id_profissional" required><option value="">Selecione uma profissional...</option><% (profissionais || []).forEach(p => { %><option value="<%= p._id %>"><%= p.nome %><%= p.especialidade ? ' — ' + p.especialidade : '' %></option><% }) %></select></div>
+            <div class="agenda-full"><label class="label-secao"><i class="fas fa-calendar me-1"></i> Data</label><div class="calendario-semana" id="calendarioSemana"></div><small class="text-secondary d-block mt-2"><i class="fas fa-info-circle me-1"></i>Funcionamento: terça a sábado · 09h às 18h</small></div>
+            <div class="agenda-full" id="secaoHorarios" style="display:none;"><label class="label-secao"><i class="fas fa-clock me-1"></i> Horário</label><div class="horarios-grid" id="horariosGrid"></div><small class="text-secondary d-block mt-2">Horários riscados estão ocupados ou ultrapassam o expediente.</small></div>
+            <input type="hidden" id="dataHora" name="data_hora_inicio" required>
+            <div class="agenda-full"><button type="submit" class="btn-dourado w-100" id="btnConfirmar" disabled><i class="fas fa-calendar-check me-2"></i>CONFIRMAR AGENDAMENTO</button></div>
+          </form>
+        </div>
+      </div>
+    <% } %>
+  </main>
+  <%- include('partials/footer') %>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="/assets/js/navbar.js"></script>
+  <script>
+    const HORARIOS=["09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30"];
+    const DIAS_SEMANA=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"], MESES=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]; let dataSelecionada=null,duracaoServico=60;
+    const pad=n=>String(n).padStart(2,'0');
+    function atualizarDuracao(){const sel=document.getElementById('servico');const opt=sel.options[sel.selectedIndex];duracaoServico=parseInt(opt?.dataset?.duracao||60)}
+    function gerarCalendario(){const c=document.getElementById('calendarioSemana'); if(!c) return; c.innerHTML=''; const hoje=new Date(); hoje.setHours(0,0,0,0); for(let i=1;i<=21;i++){const d=new Date(hoje);d.setDate(hoje.getDate()+i);const dia=d.getDay();const b=document.createElement('button');b.type='button';b.className='dia-btn'+(dia===0||dia===1?' fechado':'');b.innerHTML=`<div style="font-size:.72rem;opacity:.75">${DIAS_SEMANA[dia]}</div><div style="font-size:1.1rem;font-weight:800">${d.getDate()}</div><div style="font-size:.72rem;opacity:.75">${MESES[d.getMonth()]}</div>`;if(dia!==0&&dia!==1)b.onclick=()=>selecionarDia(d,b);c.appendChild(b)}}
+    function selecionarDia(data,btn){document.querySelectorAll('.dia-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');dataSelecionada=data;document.getElementById('dataHora').value='';document.getElementById('btnConfirmar').disabled=true;document.getElementById('secaoHorarios').style.display='block';recarregarHorariosSePossivel()}
+    async function recarregarHorariosSePossivel(){if(!dataSelecionada)return; atualizarDuracao(); const idServico=document.getElementById('servico').value,idProf=document.getElementById('profissional').value; const grid=document.getElementById('horariosGrid'); document.getElementById('dataHora').value='';document.getElementById('btnConfirmar').disabled=true; if(!idServico||!idProf){grid.innerHTML='<span class="text-secondary small">Selecione serviço e profissional para ver os horários.</span>';return} const data=`${dataSelecionada.getFullYear()}-${pad(dataSelecionada.getMonth()+1)}-${pad(dataSelecionada.getDate())}`; grid.innerHTML='<span class="text-secondary small">Consultando disponibilidade...</span>'; try{const resp=await fetch(`/agendamentos/disponibilidade?data=${encodeURIComponent(data)}&id_servico=${encodeURIComponent(idServico)}&id_profissional=${encodeURIComponent(idProf)}`); const payload=await resp.json(); gerarHorarios(dataSelecionada,payload.horarios||[])}catch(e){gerarHorarios(dataSelecionada,[])}}
+    function gerarHorarios(data,disp=[]){const grid=document.getElementById('horariosGrid');grid.innerHTML=''; const mapa=new Map(disp.map(h=>[h.horario,h.disponivel])); HORARIOS.forEach(h=>{const b=document.createElement('button');b.type='button';b.className='horario-btn';b.textContent=h;const disponivel=mapa.has(h)?mapa.get(h):false;if(!disponivel){b.classList.add('ocupado');b.disabled=true;b.title='Ocupado ou fora do expediente'}else{b.onclick=()=>{document.querySelectorAll('.horario-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('dataHora').value=`${data.getFullYear()}-${pad(data.getMonth()+1)}-${pad(data.getDate())}T${h}`;document.getElementById('btnConfirmar').disabled=false}}grid.appendChild(b)})}
+    ['servico','profissional'].forEach(id=>{const el=document.getElementById(id); if(el) el.addEventListener('change',recarregarHorariosSePossivel)}); gerarCalendario();
+  </script>
+</body>
+</html>

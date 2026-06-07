@@ -1,0 +1,58 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000701"
+    },
+    "nome_metodo": "Dinheiro",
+    "taxa_operadora": 0,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000702"
+    },
+    "nome_metodo": "PIX presencial",
+    "taxa_operadora": 0,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000703"
+    },
+    "nome_metodo": "Débito",
+    "taxa_operadora": 1.99,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000704"
+    },
+    "nome_metodo": "Crédito",
+    "taxa_operadora": 3.49,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

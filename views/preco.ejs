@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'Preços' }) %>
+</head>
+
+<body data-bs-theme="dark">
+
+  <%- include('partials/navbar', { paginaAtiva: 'preco' }) %>
+
+  <main class="container py-5 mt-3">
+
+    <div class="text-center mb-5">
+      <h1 class="titulo-servico">Serviços do Studio</h1>
+      <div class="mx-auto mt-2" style="width:60px;height:3px;background:var(--cor-dourado);border-radius:2px;"></div>
+      <p class="text-secondary mt-3">Tabela organizada por categoria e tamanho do cabelo. No agendamento, escolha a opção correspondente ao serviço desejado.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- ESCOVA -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Escova</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>P</span><strong>R$ 40,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>M</span><strong>R$ 50,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>G</span><strong>R$ 60,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Extra G</span><strong>R$ 80,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- TRATAMENTOS PONTUAIS -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Tratamentos</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Hidratação <small class="text-secondary">(escova à parte)</small></span><strong>R$ 50,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Reconstrução</span><strong>R$ 100,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Cauterização</span><strong>R$ 100,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- CRONOGRAMA CAPILAR TRADICIONAL -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Cronograma Capilar <em>Tradicional</em></h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>P</span><strong>R$ 150,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>M</span><strong>R$ 250,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>G</span><strong>R$ 280,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- CRONOGRAMA CAPILAR TERAPÊUTICO -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Cronograma Capilar <em>Terapêutico</em></h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>A partir de</span><strong>R$ 250,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- PROGRESSIVA -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Progressiva</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>P</span><strong>R$ 140,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>M</span><strong>R$ 150,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>G</span><strong>R$ 160,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Extra G</span><strong>R$ 180,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- SELAGEM -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Selagem</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>P</span><strong>R$ 140,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>M</span><strong>R$ 150,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>G</span><strong>R$ 160,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Extra G</span><strong>R$ 180,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- BOTOX CAPILAR -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Botox Capilar</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>P</span><strong>R$ 100,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>M</span><strong>R$ 120,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>G</span><strong>R$ 130,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Extra G</span><strong>R$ 140,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- COLORAÇÃO -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Coloração</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Com a tinta da cliente <small class="text-secondary">(escova à parte)</small></span><strong>R$ 35,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Com a tinta do salão <small class="text-secondary">(escova à parte)</small></span><strong>R$ 60,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- CORTE & BANHO DE PETRÓLEO -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Corte & Petróleo</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Corte</span><strong>R$ 35,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Banho de Petróleo <small class="text-secondary">(incluso escova)</small></span><strong>R$ 100,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+      <!-- LUZES & DESCOLORAÇÃO -->
+      <div class="col-lg-4 col-md-6">
+        <div class="precos p-4 h-100 d-flex flex-column">
+          <h1 class="text-dourado mb-2" style="font-family:var(--fonte-titulo);">Luzes & Descoloração</h1>
+          <hr style="border-color:rgba(255,196,0,0.20);">
+          <ul class="list-group list-group-flush mb-4 flex-grow-1">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Luzes / Moreno Iluminado</span><strong>A partir de R$ 250,00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Descoloração Global</span><strong>A partir de R$ 300,00</strong>
+            </li>
+          </ul>
+          <a href="/agendamento" class="btn-agendar btn w-100 mt-auto">AGENDAR</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text-center text-secondary small mt-5">
+      <i class="fas fa-info-circle me-1"></i>
+      Preços sujeitos a alteração. Consulte disponibilidade ao agendar.
+    </p>
+
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/navbar.js"></script>
+
+</body>
+</html>

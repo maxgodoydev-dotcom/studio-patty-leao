@@ -1,0 +1,302 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000000501"
+    },
+    "codigo_barras": null,
+    "descricao": "Kit Tratamento Capilar",
+    "custo_unitario": 45.0,
+    "preco_venda": 80.0,
+    "unidade_medida": "un",
+    "flg_insumo": false,
+    "flg_venda": true,
+    "imagem_url": "/assets/img/imagemKit.webp",
+    "descricao_vitrine": "Kit capilar para cuidado pós-serviço e manutenção dos fios.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000502"
+    },
+    "codigo_barras": null,
+    "descricao": "Reparador de Pontas",
+    "custo_unitario": 20.0,
+    "preco_venda": 40.0,
+    "unidade_medida": "un",
+    "flg_insumo": true,
+    "flg_venda": true,
+    "imagem_url": "/assets/img/imagemReparador.png",
+    "descricao_vitrine": "Reparador de pontas para finalização e brilho.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000503"
+    },
+    "codigo_barras": null,
+    "descricao": "Perfume Capilar",
+    "custo_unitario": 30.0,
+    "preco_venda": 60.0,
+    "unidade_medida": "un",
+    "flg_insumo": false,
+    "flg_venda": true,
+    "imagem_url": "/assets/img/imagemPerfume.png",
+    "descricao_vitrine": "Perfume capilar para uso diário.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000504"
+    },
+    "codigo_barras": null,
+    "descricao": "Shampoo Profissional Neutro",
+    "custo_unitario": 55.0,
+    "preco_venda": 95.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Shampoo de uso técnico para lavatório.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000505"
+    },
+    "codigo_barras": null,
+    "descricao": "Máscara Hidratante Profissional",
+    "custo_unitario": 75.0,
+    "preco_venda": 130.0,
+    "unidade_medida": "g",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Máscara de hidratação para tratamentos.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000506"
+    },
+    "codigo_barras": null,
+    "descricao": "Queratina Líquida",
+    "custo_unitario": 60.0,
+    "preco_venda": 115.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Insumo para reconstrução e tratamentos de massa.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000507"
+    },
+    "codigo_barras": null,
+    "descricao": "Produto Progressiva Orgânica",
+    "custo_unitario": 120.0,
+    "preco_venda": 220.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Produto técnico para progressiva orgânica.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000508"
+    },
+    "codigo_barras": null,
+    "descricao": "Produto Botox Capilar",
+    "custo_unitario": 110.0,
+    "preco_venda": 210.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Produto técnico para botox capilar.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000509"
+    },
+    "codigo_barras": null,
+    "descricao": "Água Oxigenada Profissional",
+    "custo_unitario": 35.0,
+    "preco_venda": 65.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Oxidante para coloração e mechas.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000510"
+    },
+    "codigo_barras": null,
+    "descricao": "Pó Descolorante",
+    "custo_unitario": 45.0,
+    "preco_venda": 90.0,
+    "unidade_medida": "g",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Pó técnico para luzes e descoloração.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000511"
+    },
+    "codigo_barras": null,
+    "descricao": "Tonalizante Profissional",
+    "custo_unitario": 38.0,
+    "preco_venda": 78.0,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Tonalizante para correção e realce de cor.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000512"
+    },
+    "codigo_barras": null,
+    "descricao": "Coloração Profissional",
+    "custo_unitario": 42.0,
+    "preco_venda": 85.0,
+    "unidade_medida": "un",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Tinta/coloração profissional para aplicação em salão.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000513"
+    },
+    "codigo_barras": null,
+    "descricao": "Luvas Descartáveis",
+    "custo_unitario": 18.0,
+    "preco_venda": 35.0,
+    "unidade_medida": "un",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Luvas de uso técnico para atendimento.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000514"
+    },
+    "codigo_barras": null,
+    "descricao": "Papel Alumínio Profissional",
+    "custo_unitario": 22.0,
+    "preco_venda": 45.0,
+    "unidade_medida": "m",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Papel alumínio para mechas e procedimentos.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000000515"
+    },
+    "codigo_barras": null,
+    "descricao": "Finalizador Leave-in",
+    "custo_unitario": 32.0,
+    "preco_venda": 69.9,
+    "unidade_medida": "ml",
+    "flg_insumo": true,
+    "flg_venda": false,
+    "imagem_url": null,
+    "descricao_vitrine": "Finalizador técnico de uso interno em atendimentos.",
+    "createdAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

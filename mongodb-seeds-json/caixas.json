@@ -1,0 +1,62 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000003001"
+    },
+    "data_referencia": "2026-06-06",
+    "data_abertura": {
+      "$date": "2026-06-06T11:30:00.000Z"
+    },
+    "data_fechamento": {
+      "$date": "2026-06-06T21:00:00.000Z"
+    },
+    "saldo_inicial": 100,
+    "saldo_final_informado": 184.9,
+    "diferenca_caixa": 0,
+    "total_entradas": 119.9,
+    "total_saidas": 35,
+    "saldo_calculado": 184.9,
+    "status": "Fechado",
+    "id_usuario_abertura": {
+      "$oid": "666000000000000000000003"
+    },
+    "id_usuario_fechamento": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": "Fechamento simples de exemplo para apresentação.",
+    "createdAt": {
+      "$date": "2026-06-06T11:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-06T21:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000003002"
+    },
+    "data_referencia": "2026-06-07",
+    "data_abertura": {
+      "$date": "2026-06-07T11:30:00.000Z"
+    },
+    "data_fechamento": null,
+    "saldo_inicial": 100,
+    "saldo_final_informado": null,
+    "diferenca_caixa": null,
+    "total_entradas": 50,
+    "total_saidas": 0,
+    "saldo_calculado": 150,
+    "status": "Aberto",
+    "id_usuario_abertura": {
+      "$oid": "666000000000000000000003"
+    },
+    "id_usuario_fechamento": null,
+    "observacao": "Caixa aberto para movimentações do dia.",
+    "createdAt": {
+      "$date": "2026-06-07T11:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

@@ -1,0 +1,159 @@
+[
+  {
+    "_id": {
+      "$oid": "666000000000000000002001"
+    },
+    "tipo": "ENTRADA",
+    "origem": "ATENDIMENTO",
+    "descricao": "Pagamento presencial - Corte Feminino",
+    "valor": 80,
+    "forma_pagamento": "PIX presencial",
+    "status_pagamento": "Pago",
+    "data_movimentacao": {
+      "$date": "2026-06-06T14:15:00.000Z"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000306"
+    },
+    "id_agendamento": {
+      "$oid": "666000000000000000000906"
+    },
+    "id_reserva_vitrine": null,
+    "id_venda": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": null,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-06T14:15:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000002002"
+    },
+    "tipo": "ENTRADA",
+    "origem": "ATENDIMENTO",
+    "descricao": "Pagamento presencial - Reconstrução Capilar",
+    "valor": 120,
+    "forma_pagamento": "Débito",
+    "status_pagamento": "Pago",
+    "data_movimentacao": {
+      "$date": "2026-06-03T14:25:00.000Z"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000302"
+    },
+    "id_agendamento": {
+      "$oid": "666000000000000000000909"
+    },
+    "id_reserva_vitrine": null,
+    "id_venda": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": null,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-03T14:25:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000002003"
+    },
+    "tipo": "ENTRADA",
+    "origem": "RESERVA_VITRINE",
+    "descricao": "Retirada presencial - Perfume Capilar",
+    "valor": 39.9,
+    "forma_pagamento": "Dinheiro",
+    "status_pagamento": "Pago",
+    "data_movimentacao": {
+      "$date": "2026-06-06T13:15:00.000Z"
+    },
+    "id_cliente": {
+      "$oid": "666000000000000000000305"
+    },
+    "id_agendamento": null,
+    "id_reserva_vitrine": {
+      "$oid": "666000000000000000000953"
+    },
+    "id_venda": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": null,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-06T13:15:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000002004"
+    },
+    "tipo": "SAIDA",
+    "origem": "MANUAL",
+    "descricao": "Compra emergencial de descartáveis",
+    "valor": 35,
+    "forma_pagamento": "Dinheiro",
+    "status_pagamento": "Pago",
+    "data_movimentacao": {
+      "$date": "2026-06-06T17:00:00.000Z"
+    },
+    "id_cliente": null,
+    "id_agendamento": null,
+    "id_reserva_vitrine": null,
+    "id_venda": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": null,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-06T17:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "666000000000000000002005"
+    },
+    "tipo": "ENTRADA",
+    "origem": "MANUAL",
+    "descricao": "Ajuste manual de entrada operacional",
+    "valor": 50,
+    "forma_pagamento": "Dinheiro",
+    "status_pagamento": "Pago",
+    "data_movimentacao": {
+      "$date": "2026-06-07T12:30:00.000Z"
+    },
+    "id_cliente": null,
+    "id_agendamento": null,
+    "id_reserva_vitrine": null,
+    "id_venda": null,
+    "id_usuario_responsavel": {
+      "$oid": "666000000000000000000003"
+    },
+    "observacao": null,
+    "flg_ativo": true,
+    "createdAt": {
+      "$date": "2026-06-07T12:30:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-06-07T12:00:00.000Z"
+    }
+  }
+]

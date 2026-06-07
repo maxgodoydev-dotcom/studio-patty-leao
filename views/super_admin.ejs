@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <%- include('partials/head', { titulo: 'BI Central' }) %>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-bs-theme="dark">
+  <% const formatarMoeda = (valor) => Number(valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); %>
+
+  <div class="layout-admin">
+    <%- include('partials/sidebarAdmin', { paginaAdmin: 'super_admin' }) %>
+
+    <main class="conteudo-admin">
+      <!-- HEADER -->
+      <div class="d-flex align-items-center justify-content-between gap-3 mb-4 flex-wrap">
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-sm btn-outline-warning d-lg-none" id="sidebarOpen" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div>
+            <h1 class="text-dourado mb-0" style="font-family:var(--fonte-titulo);font-size:1.8rem;">
+              <i class="fas fa-chart-pie me-2"></i>BI Central
+            </h1>
+            <p class="text-secondary small mb-0">Visão operacional do Studio Patty Leão</p>
+          </div>
+        </div>
+        <span class="badge rounded-pill text-bg-dark border border-warning-subtle text-warning px-3 py-2">
+          <i class="fas fa-calendar-week me-1"></i> Painel simples e operacional
+        </span>
+      </div>
+
+      <!-- KPIs PRINCIPAIS -->
+      <div class="row g-3 mb-4">
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-kpi p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-secondary small text-uppercase mb-1">Clientes ativos</p>
+                <h3 class="text-dourado fw-bold mb-0"><%= typeof clientesAtivos !== 'undefined' ? clientesAtivos : 0 %></h3>
+                <small class="text-secondary">Total cadastrado: <%= typeof totalClientes !== 'undefined' ? totalClientes : 0 %></small>
+              </div>
+              <i class="fas fa-users fa-2x text-dourado opacity-75"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-kpi p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-secondary small text-uppercase mb-1">Agendamentos da semana</p>
+                <h3 class="text-dourado fw-bold mb-0"><%= typeof agendamentosSemana !== 'undefined' ? agendamentosSemana : 0 %></h3>
+                <small class="text-secondary">Hoje: <%= typeof agendamentosHoje !== 'undefined' ? agendamentosHoje : 0 %></small>
+              </div>
+              <i class="fas fa-calendar-check fa-2x text-dourado opacity-75"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-kpi p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-secondary small text-uppercase mb-1">Entradas do mês</p>
+                <h3 class="text-success fw-bold mb-0"><%= formatarMoeda(typeof receitaMes !== 'undefined' ? receitaMes : 0) %></h3>
+                <small class="text-secondary">Saldo: <%= formatarMoeda(typeof saldoMes !== 'undefined' ? saldoMes : 0) %></small>
+              </div>
+              <i class="fas fa-coins fa-2x text-success opacity-75"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <div class="card card-kpi p-3 h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-secondary small text-uppercase mb-1">Estoque crítico</p>
+                <h3 class="text-danger fw-bold mb-0"><%= typeof itensCriticos !== 'undefined' ? itensCriticos : 0 %></h3>
+                <small class="text-secondary">Itens abaixo do mínimo</small>
+              </div>
+              <i class="fas fa-triangle-exclamation fa-2x text-danger opacity-75"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPIs OPERACIONAIS -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-3 col-sm-6">
+          <div class="card p-3 text-center h-100">
+            <p class="text-secondary small text-uppercase mb-1">Concluídos na semana</p>
+            <h4 class="text-success fw-bold mb-0"><%= typeof concluidosSemana !== 'undefined' ? concluidosSemana : 0 %></h4>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="card p-3 text-center h-100">
+            <p class="text-secondary small text-uppercase mb-1">Confirmados na semana</p>
+            <h4 class="text-info fw-bold mb-0"><%= typeof confirmadosSemana !== 'undefined' ? confirmadosSemana : 0 %></h4>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="card p-3 text-center h-100">
+            <p class="text-secondary small text-uppercase mb-1">Cancelamentos no mês</p>
+            <h4 class="text-warning fw-bold mb-0"><%= typeof cancelamentosMes !== 'undefined' ? cancelamentosMes : 0 %></h4>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="card p-3 text-center h-100">
+            <p class="text-secondary small text-uppercase mb-1">Faltas no mês</p>
+            <h4 class="text-danger fw-bold mb-0"><%= typeof faltasMes !== 'undefined' ? faltasMes : 0 %></h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICOS -->
+      <div class="row g-4 mb-4">
+        <div class="col-xl-6">
+          <div class="card chart-card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-chart-column me-2"></i>Entradas por semana do mês</h6>
+            <canvas id="graficoReceita" height="120"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="card chart-card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-scissors me-2"></i>Serviços mais realizados</h6>
+            <canvas id="graficoServicos" height="120"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-xl-6">
+          <div class="card chart-card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-user-check me-2"></i>Profissionais mais requisitadas</h6>
+            <canvas id="graficoProfissionais" height="120"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="card chart-card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-list-check me-2"></i>Status dos agendamentos no mês</h6>
+            <canvas id="graficoStatus" height="120"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- LISTAS DE APOIO -->
+      <div class="row g-4 mb-4">
+        <div class="col-xl-4">
+          <div class="card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-box-open me-2"></i>Estoque crítico</h6>
+            <% if ((estoqueCritico || []).length === 0) { %>
+              <p class="text-secondary small mb-0">Nenhum item crítico no momento.</p>
+            <% } else { %>
+              <div class="list-group list-group-flush">
+                <% (estoqueCritico || []).forEach(item => { %>
+                  <div class="d-flex justify-content-between gap-3 py-2 border-bottom border-secondary-subtle">
+                    <div>
+                      <p class="mb-0 small fw-semibold"><%= item.id_produto?.descricao || 'Produto não identificado' %></p>
+                      <small class="text-secondary"><%= item.id_produto?.sku || 'Sem SKU' %></small>
+                    </div>
+                    <span class="badge text-bg-danger align-self-center">
+                      <%= item.quantidade_atual %> / <%= item.quantidade_minima %> <%= item.id_produto?.unidade_medida || '' %>
+                    </span>
+                  </div>
+                <% }) %>
+              </div>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="col-xl-4">
+          <div class="card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-bag-shopping me-2"></i>Reservas da vitrine no mês</h6>
+            <% const reservas = reservasMes || { Pendente: 0, Confirmada: 0, Retirada: 0, Cancelada: 0 }; %>
+            <div class="d-flex justify-content-between py-2 border-bottom border-secondary-subtle">
+              <span class="text-secondary">Pendentes</span><strong><%= reservas.Pendente || 0 %></strong>
+            </div>
+            <div class="d-flex justify-content-between py-2 border-bottom border-secondary-subtle">
+              <span class="text-secondary">Confirmadas</span><strong class="text-info"><%= reservas.Confirmada || 0 %></strong>
+            </div>
+            <div class="d-flex justify-content-between py-2 border-bottom border-secondary-subtle">
+              <span class="text-secondary">Retiradas</span><strong class="text-success"><%= reservas.Retirada || 0 %></strong>
+            </div>
+            <div class="d-flex justify-content-between py-2">
+              <span class="text-secondary">Canceladas</span><strong class="text-danger"><%= reservas.Cancelada || 0 %></strong>
+            </div>
+            <p class="text-secondary small mt-3 mb-0">A vitrine continua sendo apenas reserva presencial, sem checkout online.</p>
+          </div>
+        </div>
+
+        <div class="col-xl-4">
+          <div class="card p-4 h-100">
+            <h6 class="text-dourado mb-3"><i class="fas fa-calendar-day me-2"></i>Próximos agendamentos</h6>
+            <% if ((proximosAgendamentos || []).length === 0) { %>
+              <p class="text-secondary small mb-0">Nenhum agendamento futuro encontrado.</p>
+            <% } else { %>
+              <% (proximosAgendamentos || []).forEach(ag => { %>
+                <div class="py-2 border-bottom border-secondary-subtle">
+                  <p class="mb-0 small fw-semibold"><%= ag.id_cliente?.nome || 'Cliente' %></p>
+                  <small class="text-secondary">
+                    <%= new Date(ag.data_hora_inicio).toLocaleString('pt-BR') %> • <%= ag.status_agendamento %>
+                  </small>
+                </div>
+              <% }) %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <!-- ATALHOS -->
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="/recepcao" class="card p-4 text-decoration-none d-flex flex-row align-items-center gap-3 h-100">
+            <i class="fas fa-calendar-check fa-2x text-dourado"></i>
+            <div>
+              <p class="text-dourado fw-bold mb-0">Recepção</p>
+              <p class="text-secondary small mb-0">Gerenciar agendamentos</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="/estoque" class="card p-4 text-decoration-none d-flex flex-row align-items-center gap-3 h-100">
+            <i class="fas fa-boxes fa-2x text-dourado"></i>
+            <div>
+              <p class="text-dourado fw-bold mb-0">Estoque</p>
+              <p class="text-secondary small mb-0">Produtos e insumos</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="/financeiro" class="card p-4 text-decoration-none d-flex flex-row align-items-center gap-3 h-100">
+            <i class="fas fa-chart-line fa-2x text-dourado"></i>
+            <div>
+              <p class="text-dourado fw-bold mb-0">Financeiro</p>
+              <p class="text-secondary small mb-0">Caixa manual e entradas</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/admin.js"></script>
+  <script>
+    const labelsReceita = <%- JSON.stringify(typeof labelsReceita !== 'undefined' ? labelsReceita : ['Sem. 1','Sem. 2','Sem. 3','Sem. 4','Sem. 5']) %>;
+    const dadosReceita  = <%- JSON.stringify(typeof dadosReceita  !== 'undefined' ? dadosReceita  : [0,0,0,0,0]) %>;
+    const labelsServicos = <%- JSON.stringify(typeof labelsServicos !== 'undefined' ? labelsServicos : []) %>;
+    const dadosServicos  = <%- JSON.stringify(typeof dadosServicos  !== 'undefined' ? dadosServicos  : []) %>;
+    const labelsProfissionais = <%- JSON.stringify(typeof labelsProfissionais !== 'undefined' ? labelsProfissionais : []) %>;
+    const dadosProfissionais  = <%- JSON.stringify(typeof dadosProfissionais  !== 'undefined' ? dadosProfissionais  : []) %>;
+    const labelsStatus = <%- JSON.stringify(typeof labelsStatus !== 'undefined' ? labelsStatus : []) %>;
+    const dadosStatus  = <%- JSON.stringify(typeof dadosStatus  !== 'undefined' ? dadosStatus  : []) %>;
+
+    StudioCharts.barra('graficoReceita', labelsReceita, [{
+      label: 'Entradas (R$)',
+      data: dadosReceita,
+      backgroundColor: 'rgba(255,196,0,0.55)',
+      borderColor: '#ffc400',
+      borderWidth: 1,
+    }]);
+
+    StudioCharts.rosca('graficoServicos', labelsServicos.length ? labelsServicos : ['Sem dados'], dadosServicos.length ? dadosServicos : [1],
+      ['#ffc400','#ffd54a','#c4a601','#ffe27a','#8f7900']
+    );
+
+    StudioCharts.barra('graficoProfissionais', labelsProfissionais.length ? labelsProfissionais : ['Sem dados'], [{
+      label: 'Atendimentos',
+      data: dadosProfissionais.length ? dadosProfissionais : [0],
+      backgroundColor: 'rgba(13,202,240,0.45)',
+      borderColor: '#0dcaf0',
+      borderWidth: 1,
+    }]);
+
+    StudioCharts.rosca('graficoStatus', labelsStatus.length ? labelsStatus : ['Sem dados'], dadosStatus.length ? dadosStatus : [1],
+      ['#ffc400','#0dcaf0','#6f42c1','#198754','#dc3545','#fd7e14','#adb5bd']
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<%#
+  PARTIAL: sidebarAdmin.ejs
+  USO: include('partials/sidebarAdmin', { paginaAdmin: 'estoque' })
+  paginaAdmin: 'super_admin' | 'recepcao' | 'estoque' | 'financeiro' | 'profissional'
+%>
+<%
+  const sideUsuario = (typeof usuario !== 'undefined' && usuario) ? usuario : null;
+  const sidePermissoes = sideUsuario && Array.isArray(sideUsuario.permissoes) ? sideUsuario.permissoes : [];
+  const has = (p) => sidePermissoes.includes(p);
+  const isSuper = has('SUPER_ADMIN');
+  const podeRecepcao = isSuper || has('RECEPCAO');
+  const podeEstoque = isSuper || has('ESTOQUE');
+  const podeFinanceiro = isSuper || has('FINANCEIRO');
+  const podeProfissional = has('PROFISSIONAL');
+  const nomeSidebar = sideUsuario?.nome || sideUsuario?.email || 'Usuário';
+  const cargoSidebar = isSuper ? 'Super Admin' : (podeRecepcao ? 'Recepção' : (podeFinanceiro ? 'Financeiro' : (podeEstoque ? 'Estoque' : (podeProfissional ? 'Profissional' : 'Cliente'))));
+%>
+<aside class="sidebar-admin" id="sidebarAdmin">
+
+  <!-- LOGO -->
+  <div class="sidebar-header">
+    <a href="/" class="sidebar-logo" aria-label="Ir para o site">
+      <img src="/assets/img/logo.png" alt="Studio Patty Leão" height="52">
+    </a>
+    <button class="sidebar-toggle-btn d-lg-none" id="sidebarClose" aria-label="Fechar menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- PERFIL -->
+  <div class="sidebar-perfil">
+    <div class="sidebar-avatar">
+      <i class="fas <%= isSuper ? 'fa-user-shield' : (podeProfissional ? 'fa-scissors' : 'fa-user') %>"></i>
+    </div>
+    <div class="sidebar-perfil-texto">
+      <p class="sidebar-nome" title="<%= nomeSidebar %>"><%= nomeSidebar %></p>
+      <span class="sidebar-cargo"><%= cargoSidebar %></span>
+      <% if (sidePermissoes.length) { %>
+        <div class="sidebar-badges mt-2">
+          <% sidePermissoes.slice(0, 3).forEach(p => { %>
+            <span class="sidebar-permissao-badge"><%= p.replace('_', ' ') %></span>
+          <% }) %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- NAVEGAÇÃO -->
+  <nav class="sidebar-nav">
+    <p class="sidebar-secao-label">PAINÉIS</p>
+    <ul class="list-unstyled">
+
+      <% if (isSuper) { %>
+        <li>
+          <a href="/admin" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'super_admin') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-chart-pie me-2"></i> BI Central
+          </a>
+        </li>
+      <% } %>
+
+      <% if (podeRecepcao) { %>
+        <li>
+          <a href="/recepcao" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'recepcao') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-calendar-check me-2"></i> Recepção
+          </a>
+        </li>
+      <% } %>
+
+      <% if (podeProfissional) { %>
+        <li>
+          <a href="/perfil/profissional" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'profissional') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-scissors me-2"></i> Minha Agenda
+          </a>
+        </li>
+      <% } %>
+
+      <% if (podeEstoque) { %>
+        <li>
+          <a href="/estoque" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'estoque') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-boxes me-2"></i> Estoque
+          </a>
+        </li>
+        <li>
+          <a href="/fornecedores" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'fornecedores') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-truck-field me-2"></i> Fornecedores
+          </a>
+        </li>
+      <% } %>
+
+      <% if (podeFinanceiro) { %>
+        <li>
+          <a href="/financeiro" class="sidebar-link <%= (typeof paginaAdmin !== 'undefined' && paginaAdmin === 'financeiro') ? 'sidebar-link--ativo' : '' %>">
+            <i class="fas fa-chart-line me-2"></i> Financeiro
+          </a>
+        </li>
+      <% } %>
+
+    </ul>
+
+    <p class="sidebar-secao-label mt-4">SISTEMA</p>
+    <ul class="list-unstyled">
+
+      <li>
+        <a href="/perfil" class="sidebar-link">
+          <i class="fas fa-user-circle me-2"></i> Meu Perfil
+        </a>
+      </li>
+
+      <li>
+        <a href="/perfil/cliente#reservas" class="sidebar-link">
+          <i class="fas fa-bag-shopping me-2"></i> Minhas Reservas
+        </a>
+      </li>
+
+      <li>
+        <a href="/agendamento" class="sidebar-link">
+          <i class="fas fa-calendar-plus me-2"></i> Novo Agendamento
+        </a>
+      </li>
+
+      <li>
+        <a href="/" class="sidebar-link">
+          <i class="fas fa-globe me-2"></i> Ver Site
+        </a>
+      </li>
+
+      <li>
+        <form action="/auth/logout" method="POST" class="m-0">
+          <button type="submit" class="sidebar-link sidebar-link--sair w-100 text-start border-0 bg-transparent">
+            <i class="fas fa-sign-out-alt me-2"></i> Sair
+          </button>
+        </form>
+      </li>
+
+    </ul>
+  </nav>
+
+</aside>
+
+<!-- OVERLAY MOBILE -->
+<div class="sidebar-overlay d-lg-none" id="sidebarOverlay"></div>
