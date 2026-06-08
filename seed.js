@@ -2,7 +2,7 @@
 // seed.js — DESATIVADO POR DECISÃO DO PROJETO
 // ============================================================
 // O banco MongoDB Atlas será populado manualmente por arquivos JSON,
-// conforme solicitado para a entrega.
+// 
 //
 // Use os arquivos da pasta:
 //   mongodb-seeds-json/
