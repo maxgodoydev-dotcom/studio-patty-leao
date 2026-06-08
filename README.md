@@ -8,7 +8,7 @@
 
 <br>
 
-<a href="https://studio-patty-leao.onrender" target="_blank">
+<a href="https://studio-patty-leao.onrender.com" target="_blank">
   <img src="https://img.shields.io/badge/Acessar%20Plataforma-Studio%20Patty%20Leão-FACC15?style=for-the-badge&logo=render&logoColor=000000" />
 </a>
 
